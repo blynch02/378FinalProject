@@ -1,8 +1,8 @@
 # 378FinalProject
 
-#Title: Duskhold!
+Title: Duskhold!
 
-#Description: 
+Description: 
 
 Team Members: Garrett Reinhard, Jared Hammett, Braedon Lynch, Abi Muthu
 
