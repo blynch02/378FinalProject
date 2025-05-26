@@ -124,6 +124,19 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -132,9 +145,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 2175
-        width: 801
-        height: 897
+        y: 2048
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +166,10 @@ TextureImporter:
       name: New Piskel (8)_1
       rect:
         serializedVersion: 2
-        x: 1023
-        y: 2143
-        width: 802
-        height: 898
+        x: 1024
+        y: 2048
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,9 +189,9 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 1151
-        width: 1025
-        height: 898
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,10 +210,10 @@ TextureImporter:
       name: New Piskel (8)_3
       rect:
         serializedVersion: 2
-        x: 1023
-        y: 1151
-        width: 1025
-        height: 898
+        x: 1024
+        y: 1024
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -219,10 +232,10 @@ TextureImporter:
       name: New Piskel (8)_4
       rect:
         serializedVersion: 2
-        x: 63
-        y: 223
-        width: 834
-        height: 546
+        x: 0
+        y: 0
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -241,10 +254,10 @@ TextureImporter:
       name: New Piskel (8)_5
       rect:
         serializedVersion: 2
-        x: 1343
-        y: 255
-        width: 322
-        height: 674
+        x: 1024
+        y: 0
+        width: 1024
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,7 +276,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2b8eb857a77dbc5419d6057d767cb3ed
     internalID: 0
     vertices: []
     indices: 
@@ -272,7 +285,13 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      New Piskel (8)_0: 3275028520990625885
+      New Piskel (8)_1: 3150403194116108143
+      New Piskel (8)_2: -4072501624859464931
+      New Piskel (8)_3: 2977839672645786193
+      New Piskel (8)_4: -7444346396056899991
+      New Piskel (8)_5: 6989583442678287140
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
