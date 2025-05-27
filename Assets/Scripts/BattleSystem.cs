@@ -33,10 +33,30 @@ public class BattleSystem : MonoBehaviour
 
         //After battle is set up
         state = BattleState.PLAYERTURN1;
+<<<<<<< HEAD
         startBattle();
     }
     void startBattle()
     {
 
+=======
+        // startBattle();
+>>>>>>> 41dbe71d19ff3c55ad3f2df56ca0d19397327eaa
     }
+    // void startBattle()
+    // {
+    //     round = 0;
+    //     while (true)
+    //     {
+    //         // playerChar1.takeTurn();
+    //         // enemy1.takeTurn();
+    //         // playerChar2.takeTurn();
+    //         // enemy2.takeTurn();
+    //         // playerChar3.takeTurn();
+    //         // enemy3.takeTurn();
+    //         // playerChar4.takeTurn();
+    //         // enemy4.takeTurn();
+    //         round += 1;
+    //     }
+    // }
 }
