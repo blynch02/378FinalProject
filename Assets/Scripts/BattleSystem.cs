@@ -10,14 +10,14 @@ public enum BattleState
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] private GameObject playerChar1;
-    [SerializeField] private GameObject playerChar2;
-    [SerializeField] private GameObject playerChar3;
-    [SerializeField] private GameObject playerChar4;
+    // [SerializeField] private GameObject playerChar2;
+    // [SerializeField] private GameObject playerChar3;
+    // [SerializeField] private GameObject playerChar4;
 
     [SerializeField] private GameObject enemy1;
-    [SerializeField] private GameObject enemy2;
-    [SerializeField] private GameObject enemy3;
-    [SerializeField] private GameObject enemy4;
+    // [SerializeField] private GameObject enemy2;
+    // [SerializeField] private GameObject enemy3;
+    // [SerializeField] private GameObject enemy4;
     public BattleState state;
     private int round;
     void Start()
@@ -37,18 +37,6 @@ public class BattleSystem : MonoBehaviour
     }
     void startBattle()
     {
-        round = 0;
-        while (true)
-        {
-            // playerChar1.takeTurn();
-            // enemy1.takeTurn();
-            // playerChar2.takeTurn();
-            // enemy2.takeTurn();
-            // playerChar3.takeTurn();
-            // enemy3.takeTurn();
-            // playerChar4.takeTurn();
-            // enemy4.takeTurn();
-            round += 1;
-        }
+
     }
 }
