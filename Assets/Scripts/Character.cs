@@ -32,19 +32,49 @@ public class Character : MonoBehaviour
     public void startTurn()
     {
         Debug.Log("It is " + this.name + "'s turn");
-        InputPanel.SetActive(true);
         handleStatusEffects();
         if (!stunned)
         {
-
+            InputPanel.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("You are stunned, skipping turn...");
+            battleSystem.GetComponent<BattleSystem>().nextTurn();
         }
     }
 
     void handleStatusEffects()
     {
-        if (effect_dur["Stun"] != 0)
+        if (effect_dur["Stun"] > 0)
         {
             stunned = true;
+            effect_dur["Stun"] -= 1;
+        }
+        else
+        {
+            stunned = false;
+        }
+
+        if (effect_dur["Bleed_1"] > 0)
+        {
+            setHealth(health - 1);
+            Debug.Log("Took 1pt of bleed damage! " + effect_dur["Bleed_1"] + " turns remaining.");
+            effect_dur["Bleed_1"] -= 1;
+        }
+
+        if (effect_dur["Bleed_2"] > 0)
+        {
+            setHealth(health - 2);
+            Debug.Log("Took 2pts of bleed damage! " + effect_dur["Bleed_2"] + " turns remaining.");
+            effect_dur["Bleed_2"] -= 1;
+        }
+
+        if (effect_dur["Burn_4"] > 0)
+        {
+            setHealth(health - 4);
+            Debug.Log("Took 4pts of burn damage! " + effect_dur["Burn_4"] + " turns remaining.");
+            effect_dur["Burn_4"] -= 1;
         }
     }
 
