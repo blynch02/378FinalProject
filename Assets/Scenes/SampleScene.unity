@@ -1505,7 +1505,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426c1f2bfe27db14ea96650228b65ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 23
   isdead: 0
   InputPanel: {fileID: 358501111}
   enemy1: {fileID: 1598413507}
@@ -1514,7 +1514,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   targetButtonsGroup: {fileID: 1974602045}
   healthBarAnchor: {fileID: 1419197156}
-  maxHealth: 10
+  maxHealth: 23
 --- !u!1 &333520143
 GameObject:
   m_ObjectHideFlags: 0
@@ -3551,7 +3551,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426c1f2bfe27db14ea96650228b65ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 28
   isdead: 0
   InputPanel: {fileID: 1020108714}
   enemy1: {fileID: 1598413507}
@@ -3560,7 +3560,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   targetButtonsGroup: {fileID: 0}
   healthBarAnchor: {fileID: 628790493}
-  maxHealth: 10
+  maxHealth: 28
 --- !u!212 &635456143
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4222,7 +4222,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426c1f2bfe27db14ea96650228b65ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 18
   isdead: 0
   InputPanel: {fileID: 1336701097}
   enemy1: {fileID: 1598413507}
@@ -4231,7 +4231,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   targetButtonsGroup: {fileID: 0}
   healthBarAnchor: {fileID: 744622308}
-  maxHealth: 10
+  maxHealth: 18
 --- !u!212 &791107907
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4338,8 +4338,7 @@ MonoBehaviour:
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
-  healthBarAnchor: {fileID: 1841550259}
-  targetButton: {fileID: 703494376}
+  healthBarAnchor: {fileID: 519588601}
   maxHealth: 10
 --- !u!212 &800883350
 SpriteRenderer:
@@ -7049,8 +7048,7 @@ MonoBehaviour:
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
-  healthBarAnchor: {fileID: 304862441}
-  targetButton: {fileID: 1403178440}
+  healthBarAnchor: {fileID: 187404255}
   maxHealth: 10
 --- !u!212 &1471319021
 SpriteRenderer:
@@ -7920,8 +7918,7 @@ MonoBehaviour:
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
-  healthBarAnchor: {fileID: 1685600230}
-  targetButton: {fileID: 921175083}
+  healthBarAnchor: {fileID: 1455373567}
   maxHealth: 10
 --- !u!1 &1682228755
 GameObject:
@@ -7953,7 +7950,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 426c1f2bfe27db14ea96650228b65ca4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 40
   isdead: 0
   InputPanel: {fileID: 1785258476}
   enemy1: {fileID: 1598413507}
@@ -7962,7 +7959,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   targetButtonsGroup: {fileID: 0}
   healthBarAnchor: {fileID: 862501508}
-  maxHealth: 10
+  maxHealth: 40
 --- !u!212 &1682228757
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -8580,8 +8577,7 @@ MonoBehaviour:
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
-  healthBarAnchor: {fileID: 748927710}
-  targetButton: {fileID: 1480463926}
+  healthBarAnchor: {fileID: 178153571}
   maxHealth: 10
 --- !u!212 &1780222508
 SpriteRenderer:
