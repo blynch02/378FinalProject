@@ -587,7 +587,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Divine Intervention
 
-    
+
 
     Heal 1 party member for 4-8 HP
 
@@ -1672,10 +1672,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Sanctuary of light
 
-    
 
-    Heal party for 1-4 HP (Would be cool if
-    its a random value for each party member)
+
+    Heal party for 1-4 HP (Would be cool if its
+    a random value for each party member)
 
 
 '
@@ -2395,12 +2395,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Weakening Curse
 
-    
+
 
     Makes target take 20% more damage
 
-    Single
-    Target
+    Single Target
 
 '
   m_isRightToLeft: 0
@@ -5592,7 +5591,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 333357405}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: attack1
+        m_MethodName: Reap_What_You_Sow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6013,14 +6012,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Sanctimonious Smite
 
-    
+
 
     5-8 damage
 
     90% Hit Chance
 
-    20%
-    chance to Stun
+    20% chance
+    to Stun
 
     Heal Self for 1-2 HP
 
@@ -6404,16 +6403,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Holy Rebuke
 
-    
+
 
     3-6 damage
 
     90% hit chance
 
-    70% chance
-    to Stun
+    70% chance to Stun
 
-    +50% damage to Stunned
+    +50%
+    damage to Stunned
 
     Single Target
 
@@ -8685,7 +8684,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Dragons Breath
 
-    
+
 
     1-5 damage
 
