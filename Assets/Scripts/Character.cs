@@ -169,7 +169,7 @@ public class Character : MonoBehaviour
         if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
         {
             Debug.Log(this.name + ": ATTACK: Reap What You Sow WENT THROUGH");
-            Debug.Log($"Updating health bar: {health} / {maxHealth}");        
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");
             target.setHealth(target.health - damage);
             Debug.Log("Enemy Health: " + target.health);
             if (UnityEngine.Random.Range(0, 100) >= bleedThreshold)
@@ -188,11 +188,65 @@ public class Character : MonoBehaviour
         }
         InputPanel.SetActive(false);
         battleSystem.GetComponent<BattleSystem>().nextTurn();
+        
     }
 
-    public void attack2()
+    public void War_Song()
     {
-        Debug.Log("ATTACK 2 WENT THROUGH");
+        foreach (GameObject partymember in battleSystem.GetComponent<BattleSystem>().party)
+        {
+            Debug.Log("Buffed: " + partymember.name);
+            partymember.GetComponent<Character>().setStatusEffect("Strength_20", 3);
+        }
+        InputPanel.SetActive(false);
+        battleSystem.GetComponent<BattleSystem>().nextTurn();
+    }
+
+    public void Grim_Melody()
+    {
+        //Terrify 2 enemies
+        int accuracyThreshold = 20;
+        if (terrified)
+        {
+            accuracyThreshold = accuracyThreshold + 30;
+        }
+        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        {
+            setHealth(health - UnityEngine.Random.Range(1, 4));
+        }
+    }
+
+    public void Ace_In_The_Sleeve()
+    {
+        Enemy target = enemy1.GetComponent<Enemy>();
+        int damage = UnityEngine.Random.Range(1, 15);
+        int accuracyThreshold = 5;
+
+        if (strength)
+        {
+            damage = (int)math.ceil(damage * 1.2);
+        }
+        if (weakness)
+        {
+            damage = (int)math.ceil(damage * .8);
+        }
+        if (terrified)
+        {
+            accuracyThreshold = accuracyThreshold + 30;
+        }
+        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        {
+            Debug.Log(this.name + ": ATTACK: Reap What You Sow WENT THROUGH");
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");
+            target.setHealth(target.health - damage);
+            Debug.Log("Enemy Health: " + target.health);
+        }
+        else
+        {
+            Debug.Log("MISSED ATTACK");
+        }
+        InputPanel.SetActive(false);
+        battleSystem.GetComponent<BattleSystem>().nextTurn();
     }
 
     public void setHealth(int val)

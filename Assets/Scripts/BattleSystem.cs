@@ -22,7 +22,7 @@ public class BattleSystem : MonoBehaviour
     [SerializeField] private GameObject enemyChar3;
     [SerializeField] private GameObject enemyChar4;
 
-    private List<GameObject> party;
+    public List<GameObject> party;
 
     private List<GameObject> enemies;
 
