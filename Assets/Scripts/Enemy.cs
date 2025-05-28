@@ -24,6 +24,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private GameObject healthBarPrefab;
     [SerializeField] private Transform healthBarAnchor;
+    [SerializeField] private GameObject targetButton;
+
 
     private HealthBar healthBar;
     public int maxHealth = 10;
@@ -60,11 +62,16 @@ public class Enemy : MonoBehaviour
         if (this.health <= 0 && !isdead)
         {
             isdead = true;
+
+            if (targetButton != null)
+                targetButton.SetActive(false);
+
             Destroy(healthBar?.gameObject);
             Destroy(this.gameObject);
             battleSystem.GetComponent<BattleSystem>().checkEnemies();
         }
     }
+
 
 
 

@@ -19,6 +19,10 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject battleSystem;
 
     [SerializeField] private GameObject healthBarPrefab;
+    [SerializeField] private GameObject currentTarget;
+    [SerializeField] private GameObject targetButtonsGroup;
+
+
 
     private HealthBar healthBar;
 
@@ -63,6 +67,9 @@ public class Character : MonoBehaviour
         if (!stunned)
         {
             InputPanel.SetActive(true);
+
+            if (targetButtonsGroup != null)
+                targetButtonsGroup.SetActive(true);
         }
         else
         {
@@ -70,6 +77,7 @@ public class Character : MonoBehaviour
             battleSystem.GetComponent<BattleSystem>().nextTurn();
         }
     }
+
 
     void handleStatusEffects()
     {
@@ -150,7 +158,9 @@ public class Character : MonoBehaviour
 
     public void Reap_What_You_Sow()
     {
-        Enemy target = enemy1.GetComponent<Enemy>();
+        if (currentTarget == null) return;
+
+        Enemy target = currentTarget.GetComponent<Enemy>();
         int damage = UnityEngine.Random.Range(3, 5);
         int accuracyThreshold = 10;
         int bleedThreshold = 10;
@@ -187,6 +197,8 @@ public class Character : MonoBehaviour
             Debug.Log("MISSED ATTACK");
         }
         InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+            targetButtonsGroup.SetActive(false);
         battleSystem.GetComponent<BattleSystem>().nextTurn();
 
     }
@@ -199,6 +211,8 @@ public class Character : MonoBehaviour
             partymember.GetComponent<Character>().setStatusEffect("Strength_20", 3);
         }
         InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+            targetButtonsGroup.SetActive(false);
         battleSystem.GetComponent<BattleSystem>().nextTurn();
     }
 
@@ -218,7 +232,9 @@ public class Character : MonoBehaviour
 
     public void Ace_In_The_Sleeve()
     {
-        Enemy target = enemy1.GetComponent<Enemy>();
+        if (currentTarget == null) return;
+
+        Enemy target = currentTarget.GetComponent<Enemy>();
         int damage = UnityEngine.Random.Range(1, 15);
         int accuracyThreshold = 5;
 
@@ -246,6 +262,8 @@ public class Character : MonoBehaviour
             Debug.Log("MISSED ATTACK");
         }
         InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+            targetButtonsGroup.SetActive(false);
         battleSystem.GetComponent<BattleSystem>().nextTurn();
     }
 
@@ -275,4 +293,11 @@ public class Character : MonoBehaviour
     {
         return this.effect_dur[effect];
     }
+
+    public void SetTarget(GameObject target)
+    {
+        currentTarget = target;
+        Debug.Log(this.name + " is now targeting " + target.name);
+    }
+
 }
