@@ -5696,7 +5696,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 333357405}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: attack1
+        m_MethodName: Reap_What_You_Sow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
