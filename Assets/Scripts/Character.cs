@@ -188,7 +188,7 @@ public class Character : MonoBehaviour
         }
         InputPanel.SetActive(false);
         battleSystem.GetComponent<BattleSystem>().nextTurn();
-        
+
     }
 
     public void War_Song()
@@ -236,7 +236,7 @@ public class Character : MonoBehaviour
         }
         if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
         {
-            Debug.Log(this.name + ": ATTACK: Reap What You Sow WENT THROUGH");
+            Debug.Log(this.name + ": ATTACK: Ace In The Sleeve WENT THROUGH");
             Debug.Log($"Updating health bar: {health} / {maxHealth}");
             target.setHealth(target.health - damage);
             Debug.Log("Enemy Health: " + target.health);
