@@ -18,6 +18,15 @@ public class Character : MonoBehaviour
 
     [SerializeField] private GameObject battleSystem;
 
+    [SerializeField] private GameObject healthBarPrefab;
+
+    private HealthBar healthBar;
+
+    [SerializeField] private Transform healthBarAnchor;
+
+    public int maxHealth = 10;
+
+
     private bool stunned = false;
 
     private bool strength = false;
@@ -32,6 +41,11 @@ public class Character : MonoBehaviour
     {
         //Initialize status effect dictionary
         InputPanel.SetActive(false);
+        health = maxHealth;
+        GameObject hb = Instantiate(healthBarPrefab, healthBarAnchor ? healthBarAnchor.position : transform.position + Vector3.up * 1.5f, Quaternion.identity, transform);
+        healthBar = hb.GetComponent<HealthBar>();
+        Debug.Log($"Updating health bar: {health} / {maxHealth}");
+        healthBar.SetHealth(health, maxHealth);
         effect_dur.Add("Stun", 0);
         effect_dur.Add("Bleed_1", 0);
         effect_dur.Add("Bleed_2", 0);
@@ -59,7 +73,7 @@ public class Character : MonoBehaviour
 
     void handleStatusEffects()
     {
-        if (effect_dur["Stun"] > 0)
+        if (effect_dur.ContainsKey("Stun") && effect_dur["Stun"] > 0)
         {
             stunned = true;
             effect_dur["Stun"] -= 1;
@@ -69,22 +83,25 @@ public class Character : MonoBehaviour
             stunned = false;
         }
 
-        if (effect_dur["Bleed_1"] > 0)
+        if (effect_dur.ContainsKey("Bleed_1") && effect_dur["Bleed_1"] > 0)
         {
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");
             setHealth(health - 1);
             Debug.Log("Took 1pt of bleed damage! " + effect_dur["Bleed_1"] + " turns remaining.");
             effect_dur["Bleed_1"] -= 1;
         }
 
-        if (effect_dur["Bleed_2"] > 0)
+        if (effect_dur.ContainsKey("Bleed_2") && effect_dur["Bleed_2"] > 0)
         {
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");
             setHealth(health - 2);
             Debug.Log("Took 2pts of bleed damage! " + effect_dur["Bleed_2"] + " turns remaining.");
             effect_dur["Bleed_2"] -= 1;
         }
 
-        if (effect_dur["Burn_4"] > 0)
+        if (effect_dur.ContainsKey("Burn_4") && effect_dur["Burn_4"] > 0)
         {
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");
             setHealth(health - 4);
             Debug.Log("Took 4pts of burn damage! " + effect_dur["Burn_4"] + " turns remaining.");
             effect_dur["Burn_4"] -= 1;
@@ -151,7 +168,8 @@ public class Character : MonoBehaviour
         }
         if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
         {
-            Debug.Log(this.name + ": ATTACK: Reap What You Sow WENT THROUGH");        
+            Debug.Log(this.name + ": ATTACK: Reap What You Sow WENT THROUGH");
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");        
             target.setHealth(target.health - damage);
             Debug.Log("Enemy Health: " + target.health);
             if (UnityEngine.Random.Range(0, 100) >= bleedThreshold)
@@ -168,8 +186,6 @@ public class Character : MonoBehaviour
         {
             Debug.Log("MISSED ATTACK");
         }
-
-
         InputPanel.SetActive(false);
         battleSystem.GetComponent<BattleSystem>().nextTurn();
     }
@@ -181,10 +197,16 @@ public class Character : MonoBehaviour
 
     public void setHealth(int val)
     {
-        this.health = val;
-        if (this.health <= 0)
+        health = Mathf.Clamp(val, 0, maxHealth);
+        Debug.Log($"Updating health bar: {health} / {maxHealth}");
+
+        if (healthBar != null)
+            healthBar.SetHealth(health, maxHealth);
+
+        if (health <= 0 && !isdead)
         {
-            this.isdead = true;
+            isdead = true;
+            Destroy(healthBar?.gameObject);
             Destroy(this.gameObject);
             battleSystem.GetComponent<BattleSystem>().checkParty();
         }
