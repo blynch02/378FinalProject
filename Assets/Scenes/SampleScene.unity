@@ -2480,7 +2480,20 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack 3
+  m_text: 'Grim Melody
+
+    
+
+    -30% enemy accuracy
+
+    80% Hit Chance
+
+    -
+    1-4 HP on self
+
+    Affects two enemies
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3579,7 +3592,16 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack 4
+  m_text: 'Ace In The Sleeve
+
+    1-15 damage
+
+    95% Hit Chance
+
+    Single
+    Target
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4273,7 +4295,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &832603197
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4289,10 +4311,10 @@ RectTransform:
   - {fileID: 273087882}
   m_Father: {fileID: 358501112}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 800.57367, y: -137.04895}
+  m_SizeDelta: {x: 176.12749, y: 274.0979}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &832603198
 MonoBehaviour:
@@ -5211,7 +5233,14 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Attack 1
+  m_text: 'War Song
+
+
+    +20% party damage buff for 3 turn
+
+
+
+'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -8377,7 +8406,18 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Attack 2
+  m_text: 'Reap What You Sow
+
+    
+
+    3-5 damage
+
+    90% Hit Chance
+
+    90%
+    bleed chance for 2pts/turn for 3 turns
+
+    Single Target
 
 '
   m_isRightToLeft: 0
