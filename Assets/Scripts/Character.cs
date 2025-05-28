@@ -267,6 +267,177 @@ public class Character : MonoBehaviour
         battleSystem.GetComponent<BattleSystem>().nextTurn();
     }
 
+    public void Divine_Intervention()
+    {
+        Character target = battleSystem.GetComponent<BattleSystem>().party[0].GetComponent<Character>();
+        int healVal = UnityEngine.Random.Range(4, 8);
+        target.setHealth(target.health + healVal);
+        Debug.Log("Healed " + target.name + "for " + healVal);
+        InputPanel.SetActive(false);
+        battleSystem.GetComponent<BattleSystem>().nextTurn();
+    }
+
+    public void Sanctuary_Of_Light()
+    {
+        foreach (GameObject partymember in battleSystem.GetComponent<BattleSystem>().party)
+        {
+            int healVal = UnityEngine.Random.Range(1, 4);
+            Debug.Log("Healed: " + partymember.name + "For " + healVal);
+            Character member = partymember.GetComponent<Character>();
+            member.setHealth(member.health += healVal);
+        }
+        InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+            targetButtonsGroup.SetActive(false);
+        battleSystem.GetComponent<BattleSystem>().nextTurn();
+    }
+
+    public void Sanctimonious_Smite()
+    {
+        if (currentTarget == null) return;
+        int healVal = UnityEngine.Random.Range(1, 2);
+        Enemy target = currentTarget.GetComponent<Enemy>();
+
+        int damage = UnityEngine.Random.Range(5, 8);
+        int accuracyThreshold = 10;
+        int stunThreshold = 80;
+        if (strength)
+        {
+            damage = (int)math.ceil(damage * 1.2);
+        }
+        if (weakness)
+        {
+            damage = (int)math.ceil(damage * .8);
+        }
+        if (terrified)
+        {
+            accuracyThreshold = accuracyThreshold + 30;
+        }
+        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        {
+            Debug.Log(this.name + ": ATTACK: Sanctimonious Smite WENT THROUGH");
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");
+            target.setHealth(target.health - damage);
+            setHealth(health + healVal);
+            Debug.Log("Enemy Health: " + target.health);
+            if (UnityEngine.Random.Range(0, 100) >= stunThreshold)
+            {
+                target.setStatusEffect("Stun", 1);
+            }
+        }
+        else
+        {
+            Debug.Log("MISSED ATTACK");
+        }
+        InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+            targetButtonsGroup.SetActive(false);
+        battleSystem.GetComponent<BattleSystem>().nextTurn();
+    }
+
+        public void Holy_Rebuke()
+    {
+        if (currentTarget == null) return;
+        Enemy target = currentTarget.GetComponent<Enemy>();
+
+        int damage = UnityEngine.Random.Range(5, 8);
+        int accuracyThreshold = 10;
+        int stunThreshold = 30;
+        if (strength)
+        {
+            damage = (int)math.ceil(damage * 1.2);
+        }
+        if (weakness)
+        {
+            damage = (int)math.ceil(damage * .8);
+        }
+        if (terrified)
+        {
+            accuracyThreshold = accuracyThreshold + 30;
+        }
+        if (target.getStatusEffect("Stun") > 0)
+        {
+            damage = (int)math.ceil(damage * 1.5);
+        }
+
+        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        {
+            Debug.Log(this.name + ": ATTACK: Holy Rebuke WENT THROUGH");
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");
+            target.setHealth(target.health - damage);
+            Debug.Log("Enemy Health: " + target.health);
+            if (UnityEngine.Random.Range(0, 100) >= stunThreshold)
+            {
+                target.setStatusEffect("Stun", 1);
+            }
+        }
+        else
+        {
+            Debug.Log("MISSED ATTACK");
+        }
+        InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+            targetButtonsGroup.SetActive(false);
+        battleSystem.GetComponent<BattleSystem>().nextTurn();
+    }
+
+    public void Dragons_Breath()
+    {
+        foreach (GameObject enemy in battleSystem.GetComponent<BattleSystem>().enemies)
+        {
+            int damage = UnityEngine.Random.Range(1, 5);
+            Debug.Log("Healed: " + enemy.name + "For " + damage);
+            Enemy member = enemy.GetComponent<Enemy>();
+            member.setHealth(member.health -= damage);
+            member.setStatusEffect("Burn_4", 2);
+        }
+        InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+            targetButtonsGroup.SetActive(false);
+        battleSystem.GetComponent<BattleSystem>().nextTurn();
+    }
+
+    public void Zephyrs_Call()
+    {
+        if (currentTarget == null) return;
+        Enemy target = currentTarget.GetComponent<Enemy>();
+        int damage = UnityEngine.Random.Range(8, 15);
+        int stunThreshold = 50;
+
+        Debug.Log(this.name + ": ATTACK: Zephyrs Call WENT THROUGH");
+        Debug.Log($"Updating health bar: {health} / {maxHealth}");
+        target.setHealth(target.health - damage);
+        Debug.Log("Enemy Health: " + target.health);
+        if (UnityEngine.Random.Range(0, 100) >= stunThreshold)
+        {
+            setStatusEffect("Stun", 1);
+        }
+        InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+            targetButtonsGroup.SetActive(false);
+        battleSystem.GetComponent<BattleSystem>().nextTurn();
+    }
+
+    public void Aura_Of_Protection()
+    {
+        Character target = battleSystem.GetComponent<BattleSystem>().party[0].GetComponent<Character>();
+        target.setStatusEffect("Protection_50", 2);
+        Debug.Log("Protected " + target.name);
+        InputPanel.SetActive(false);
+        battleSystem.GetComponent<BattleSystem>().nextTurn();
+    }
+
+    public void Weakening_Curse()
+    {
+        if (currentTarget == null) return;
+        Enemy target = currentTarget.GetComponent<Enemy>();
+        target.setStatusEffect("Weakness_20", 1);
+        Debug.Log("Cursed " + target.name);
+        InputPanel.SetActive(false);
+        battleSystem.GetComponent<BattleSystem>().nextTurn();
+        
+    }
+
     public void setHealth(int val)
     {
         health = Mathf.Clamp(val, 0, maxHealth);

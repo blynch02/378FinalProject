@@ -24,7 +24,7 @@ public class BattleSystem : MonoBehaviour
 
     public List<GameObject> party;
 
-    private List<GameObject> enemies;
+    public List<GameObject> enemies;
 
     private int nextPlayer = 0;
 
