@@ -22,9 +22,23 @@ public class Enemy : MonoBehaviour
 
     private bool terrified = false;
 
+    [SerializeField] private GameObject healthBarPrefab;
+    [SerializeField] private Transform healthBarAnchor;
+
+    private HealthBar healthBar;
+    public int maxHealth = 10;
 
     void Start()
     {
+        health = maxHealth;
+
+        GameObject hb = Instantiate(healthBarPrefab, transform);
+        hb.transform.localPosition = healthBarAnchor.localPosition;
+        hb.transform.localRotation = Quaternion.identity;
+
+        healthBar = hb.GetComponent<HealthBar>();
+        healthBar.SetHealth(health, maxHealth);
+
         effect_dur.Add("Stun", 0);
         effect_dur.Add("Bleed_1", 0);
         effect_dur.Add("Bleed_2", 0);
@@ -33,18 +47,25 @@ public class Enemy : MonoBehaviour
         effect_dur.Add("Strength_20", 0);
         effect_dur.Add("Weakness_20", 0);
         effect_dur.Add("Terrified_30", 0);
+
     }
 
     public void setHealth(int val)
     {
-        this.health = val;
-        if (this.health <= 0)
+        this.health = Mathf.Clamp(val, 0, maxHealth);
+
+        if (healthBar != null)
+            healthBar.SetHealth(health, maxHealth);
+
+        if (this.health <= 0 && !isdead)
         {
-            this.isdead = true;
+            isdead = true;
+            Destroy(healthBar?.gameObject);
             Destroy(this.gameObject);
             battleSystem.GetComponent<BattleSystem>().checkEnemies();
         }
     }
+
 
 
     public void startTurn()
@@ -84,28 +105,28 @@ public class Enemy : MonoBehaviour
             stunned = false;
         }
 
-        if (effect_dur["Bleed_1"] > 0)
+        if (effect_dur.ContainsKey("Bleed_1") && effect_dur["Bleed_1"] > 0)
         {
             setHealth(health - 1);
             Debug.Log("Took 1pt of bleed damage! " + effect_dur["Bleed_1"] + " turns remaining.");
             effect_dur["Bleed_1"] -= 1;
         }
 
-        if (effect_dur["Bleed_2"] > 0)
+        if (effect_dur.ContainsKey("Bleed_2") && effect_dur["Bleed_2"] > 0)
         {
             setHealth(health - 2);
             Debug.Log("Took 2pts of bleed damage! " + effect_dur["Bleed_2"] + " turns remaining.");
             effect_dur["Bleed_2"] -= 1;
         }
 
-        if (effect_dur["Burn_4"] > 0)
+        if (effect_dur.ContainsKey("Burn_4") && effect_dur["Burn_4"] > 0)
         {
             setHealth(health - 4);
             Debug.Log("Took 4pts of burn damage! " + effect_dur["Burn_4"] + " turns remaining.");
             effect_dur["Burn_4"] -= 1;
 
         }
-        if (effect_dur["Protection_50"] > 0)
+        if (effect_dur.ContainsKey("Protection_50") && effect_dur["Protection_50"] > 0)
         {
             protection = true;
             effect_dur["Protection_50"] -= 1;
@@ -115,7 +136,7 @@ public class Enemy : MonoBehaviour
             protection = false;
         }
 
-        if (effect_dur["Strength_20"] > 0)
+        if (effect_dur.ContainsKey("Strength_20") && effect_dur["Strength_20"] > 0)
         {
             strength = true;
             effect_dur["Strength_20"] -= 1;
@@ -125,7 +146,7 @@ public class Enemy : MonoBehaviour
             strength = false;
         }
 
-        if (effect_dur["Weakness_20"] > 0)
+        if (effect_dur.ContainsKey("Weakness_20") && effect_dur["Weakness_20"] > 0)
         {
             weakness = true;
             effect_dur["Weakness_20"] -= 1;
@@ -135,7 +156,7 @@ public class Enemy : MonoBehaviour
             weakness = false;
         }
 
-        if (effect_dur["Terrified_30"] > 0)
+        if (effect_dur.ContainsKey("Terrified_30") && effect_dur["Terrified_30"] > 0)
         {
             terrified = true;
             effect_dur["Terrified_30"] -= 1;

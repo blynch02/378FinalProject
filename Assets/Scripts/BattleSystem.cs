@@ -84,17 +84,47 @@ public class BattleSystem : MonoBehaviour
     {
         if (state == BattleState.PLAYERTURN)
         {
-            party[nextPlayer].GetComponent<Character>().startTurn();
-            nextPlayer = (nextPlayer + 1) % 4;
-            Debug.Log("Next player to attack: " + party[nextPlayer].name);
-            state = BattleState.ENEMYTURN;
+            int attempts = 0;
+            while ((party[nextPlayer] == null || party[nextPlayer].GetComponent<Character>().isdead) && attempts < party.Count)
+            {
+                nextPlayer = (nextPlayer + 1) % party.Count;
+                attempts++;
+            }
+
+            if (party[nextPlayer] != null && !party[nextPlayer].GetComponent<Character>().isdead)
+            {
+                Debug.Log("Next player to attack: " + party[nextPlayer].name);
+                party[nextPlayer].GetComponent<Character>().startTurn();
+                nextPlayer = (nextPlayer + 1) % party.Count;
+                state = BattleState.ENEMYTURN;
+            }
+            else
+            {
+                Debug.Log("No valid players left.");
+                checkParty();
+            }
         }
         else if (state == BattleState.ENEMYTURN)
         {
-            enemies[nextEnemy].GetComponent<Enemy>().startTurn();
-            nextEnemy = (nextEnemy + 1) % 4;
-             Debug.Log("Next enemy to attack: " + enemies[nextEnemy].name);
-            state = BattleState.PLAYERTURN;
+            int attempts = 0;
+            while ((enemies[nextEnemy] == null || enemies[nextEnemy].GetComponent<Enemy>().isdead) && attempts < enemies.Count)
+            {
+                nextEnemy = (nextEnemy + 1) % enemies.Count;
+                attempts++;
+            }
+
+            if (enemies[nextEnemy] != null && !enemies[nextEnemy].GetComponent<Enemy>().isdead)
+            {
+                Debug.Log("Next enemy to attack: " + enemies[nextEnemy].name);
+                enemies[nextEnemy].GetComponent<Enemy>().startTurn();
+                nextEnemy = (nextEnemy + 1) % enemies.Count;
+                state = BattleState.PLAYERTURN;
+            }
+            else
+            {
+                Debug.Log("No valid enemies left.");
+                checkEnemies();
+            }
         }
     }
 }
