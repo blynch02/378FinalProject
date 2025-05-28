@@ -197,7 +197,10 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Assassin 5_0: -4043740229314616654
+      Assassin 5_1: 4865136203918164723
+      Assassin 5_2: 3200622603508547995
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
