@@ -587,7 +587,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Divine Intervention
 
-    
+
 
     Heal 1 party member for 4-8 HP
 
@@ -1457,7 +1457,8 @@ Transform:
   m_LocalPosition: {x: -611, y: -64, z: 0}
   m_LocalScale: {x: 16.2, y: 16.72099, z: 0.15938638}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 1419197156}
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &333357405
@@ -1477,6 +1478,9 @@ MonoBehaviour:
   InputPanel: {fileID: 358501111}
   enemy1: {fileID: 1598413507}
   battleSystem: {fileID: 836564126}
+  healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
+  healthBarAnchor: {fileID: 1419197156}
+  maxHealth: 10
 --- !u!1 &333520143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1543,8 +1547,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4278190080
-  m_fontColor: {r: 0, g: 0, b: 0, a: 1}
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -1672,10 +1676,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Sanctuary of light
 
-    
 
-    Heal party for 1-4 HP (Would be cool if
-    its a random value for each party member)
+
+    Heal party for 1-4 HP (Would be cool if its
+    a random value for each party member)
 
 
 '
@@ -2395,12 +2399,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Weakening Curse
 
-    
+
 
     Makes target take 20% more damage
 
-    Single
-    Target
+    Single Target
 
 '
   m_isRightToLeft: 0
@@ -3315,6 +3318,37 @@ Transform:
   m_Children: []
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &628790492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 628790493}
+  m_Layer: 0
+  m_Name: HealthBarAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &628790493
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 628790492}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 6.5382447, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000226}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 635456144}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &635456141
 GameObject:
   m_ObjectHideFlags: 0
@@ -3350,6 +3384,9 @@ MonoBehaviour:
   InputPanel: {fileID: 1020108714}
   enemy1: {fileID: 1598413507}
   battleSystem: {fileID: 836564126}
+  healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
+  healthBarAnchor: {fileID: 628790493}
+  maxHealth: 10
 --- !u!212 &635456143
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3417,7 +3454,8 @@ Transform:
   m_LocalPosition: {x: -161, y: -73, z: 0}
   m_LocalScale: {x: 16.2, y: 16.72099, z: 0.15938638}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 628790493}
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &660593928
@@ -3686,6 +3724,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 730559880}
   m_CullTransparentMesh: 1
+--- !u!1 &744622307
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 744622308}
+  m_Layer: 0
+  m_Name: HealthBarAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &744622308
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 744622307}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.1, y: 6.4186344, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1.0000226}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 791107908}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &766410069
 GameObject:
   m_ObjectHideFlags: 0
@@ -3808,6 +3877,9 @@ MonoBehaviour:
   InputPanel: {fileID: 1336701097}
   enemy1: {fileID: 1598413507}
   battleSystem: {fileID: 836564126}
+  healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
+  healthBarAnchor: {fileID: 744622308}
+  maxHealth: 10
 --- !u!212 &791107907
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -3875,7 +3947,8 @@ Transform:
   m_LocalPosition: {x: -312, y: -71, z: 0}
   m_LocalScale: {x: 16.2, y: 16.72099, z: 0.15938638}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 744622308}
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &800883348
@@ -4289,6 +4362,37 @@ MonoBehaviour:
   enemyChar3: {fileID: 800883348}
   enemyChar4: {fileID: 1780222506}
   state: 0
+--- !u!1 &862501507
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 862501508}
+  m_Layer: 0
+  m_Name: HealthBarAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &862501508
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862501507}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.2, y: 6.1196094, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1682228758}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &875088074
 GameObject:
   m_ObjectHideFlags: 0
@@ -5867,6 +5971,37 @@ RectTransform:
   m_AnchoredPosition: {x: -465.31238, y: -374.16882}
   m_SizeDelta: {x: -1031.3625, y: -805.9021}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!1 &1419197155
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1419197156}
+  m_Layer: 0
+  m_Name: HealthBarAnchor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1419197156
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1419197155}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 6, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 333357404}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1425409821
 GameObject:
   m_ObjectHideFlags: 0
@@ -6013,14 +6148,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Sanctimonious Smite
 
-    
+
 
     5-8 damage
 
     90% Hit Chance
 
-    20%
-    chance to Stun
+    20% chance
+    to Stun
 
     Heal Self for 1-2 HP
 
@@ -6404,16 +6539,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Holy Rebuke
 
-    
+
 
     3-6 damage
 
     90% hit chance
 
-    70% chance
-    to Stun
+    70% chance to Stun
 
-    +50% damage to Stunned
+    +50%
+    damage to Stunned
 
     Single Target
 
@@ -6756,6 +6891,9 @@ MonoBehaviour:
   InputPanel: {fileID: 1785258476}
   enemy1: {fileID: 1598413507}
   battleSystem: {fileID: 836564126}
+  healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
+  healthBarAnchor: {fileID: 862501508}
+  maxHealth: 10
 --- !u!212 &1682228757
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -6823,7 +6961,8 @@ Transform:
   m_LocalPosition: {x: -466, y: -66, z: 0}
   m_LocalScale: {x: 16.2, y: 16.72099, z: 0.15938638}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 862501508}
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1748324730
@@ -8685,7 +8824,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Dragons Breath
 
-    
+
 
     1-5 damage
 
