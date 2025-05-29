@@ -63,6 +63,10 @@ public class Character : MonoBehaviour
 
     public void startTurn()
     {
+        if (isdead)
+        {
+            battleSystem.GetComponent<BattleSystem>().nextTurn();
+        }
         Debug.Log("It is " + this.name + "'s turn");
         handleStatusEffects();
         if (!stunned)

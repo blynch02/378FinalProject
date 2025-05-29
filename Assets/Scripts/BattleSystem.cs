@@ -32,6 +32,8 @@ public class BattleSystem : MonoBehaviour
 
     public BattleState state;
     private int round;
+
+    private int turnsTillNewRound;
     void Start()
     {
         party = new List<GameObject> { playerChar1, playerChar2, playerChar3, playerChar4 };
@@ -82,49 +84,24 @@ public class BattleSystem : MonoBehaviour
 
     public void nextTurn()
     {
+        if (turnsTillNewRound % 8 == 0)
+        {
+            round += 1;
+        }
         if (state == BattleState.PLAYERTURN)
         {
-            int attempts = 0;
-            while ((party[nextPlayer] == null || party[nextPlayer].GetComponent<Character>().isdead) && attempts < party.Count)
-            {
-                nextPlayer = (nextPlayer + 1) % party.Count;
-                attempts++;
-            }
-
-            if (party[nextPlayer] != null && !party[nextPlayer].GetComponent<Character>().isdead)
-            {
-                Debug.Log("Next player to attack: " + party[nextPlayer].name);
-                party[nextPlayer].GetComponent<Character>().startTurn();
-                nextPlayer = (nextPlayer + 1) % party.Count;
-                state = BattleState.ENEMYTURN;
-            }
-            else
-            {
-                Debug.Log("No valid players left.");
-                checkParty();
-            }
+            party[nextPlayer].GetComponent<Character>().startTurn();
+            nextPlayer = (nextPlayer + 1) % 4;
+            Debug.Log("Next player to attack: " + party[nextPlayer].name);
+            state = BattleState.ENEMYTURN;
         }
         else if (state == BattleState.ENEMYTURN)
         {
-            int attempts = 0;
-            while ((enemies[nextEnemy] == null || enemies[nextEnemy].GetComponent<Enemy>().isdead) && attempts < enemies.Count)
-            {
-                nextEnemy = (nextEnemy + 1) % enemies.Count;
-                attempts++;
-            }
-
-            if (enemies[nextEnemy] != null && !enemies[nextEnemy].GetComponent<Enemy>().isdead)
-            {
-                Debug.Log("Next enemy to attack: " + enemies[nextEnemy].name);
-                enemies[nextEnemy].GetComponent<Enemy>().startTurn();
-                nextEnemy = (nextEnemy + 1) % enemies.Count;
-                state = BattleState.PLAYERTURN;
-            }
-            else
-            {
-                Debug.Log("No valid enemies left.");
-                checkEnemies();
-            }
+            enemies[nextEnemy].GetComponent<Enemy>().startTurn();
+            nextEnemy = (nextEnemy + 1) % 4;
+            Debug.Log("Next enemy to attack: " + enemies[nextEnemy].name);
+            state = BattleState.PLAYERTURN;
         }
+        turnsTillNewRound += 1;
     }
 }

@@ -68,6 +68,7 @@ public class Enemy : MonoBehaviour
 
             Destroy(healthBar?.gameObject);
             Destroy(this.gameObject);
+            Destroy(targetButton);
             battleSystem.GetComponent<BattleSystem>().checkEnemies();
         }
     }
@@ -82,6 +83,10 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator EnemyAttackRoutine()
     {
+        if (isdead)
+        {
+            battleSystem.GetComponent<BattleSystem>().nextTurn();
+        }
         handleStatusEffects();
 
         if (!stunned)
