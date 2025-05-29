@@ -65,7 +65,7 @@ public class Character : MonoBehaviour
     {
         if (isdead)
         {
-            battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+            endTurn();
         }
         Debug.Log("It is " + this.name + "'s turn");
         handleStatusEffects();
@@ -79,7 +79,7 @@ public class Character : MonoBehaviour
         else
         {
             Debug.Log("You are stunned, skipping turn...");
-            battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+            endTurn();
         }
     }
 
@@ -204,7 +204,7 @@ public class Character : MonoBehaviour
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
             targetButtonsGroup.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        endTurn();
 
     }
 
@@ -218,7 +218,7 @@ public class Character : MonoBehaviour
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
             targetButtonsGroup.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        endTurn();
     }
 
     public void Grim_Melody()
@@ -269,7 +269,7 @@ public class Character : MonoBehaviour
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
             targetButtonsGroup.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        endTurn();
     }
 
     public void Divine_Intervention()
@@ -279,7 +279,7 @@ public class Character : MonoBehaviour
         target.setHealth(target.health + healVal);
         Debug.Log("Healed " + target.name + "for " + healVal);
         InputPanel.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        endTurn();
     }
 
     public void Sanctuary_Of_Light()
@@ -294,7 +294,7 @@ public class Character : MonoBehaviour
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
             targetButtonsGroup.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        endTurn();
     }
 
     public void Sanctimonious_Smite()
@@ -337,10 +337,10 @@ public class Character : MonoBehaviour
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
             targetButtonsGroup.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        endTurn();
     }
 
-        public void Holy_Rebuke()
+    public void Holy_Rebuke()
     {
         if (currentTarget == null) return;
         Enemy target = currentTarget.GetComponent<Enemy>();
@@ -383,7 +383,7 @@ public class Character : MonoBehaviour
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
             targetButtonsGroup.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        endTurn();
     }
 
     public void Dragons_Breath()
@@ -399,7 +399,7 @@ public class Character : MonoBehaviour
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
             targetButtonsGroup.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        endTurn();
     }
 
     public void Zephyrs_Call()
@@ -420,7 +420,7 @@ public class Character : MonoBehaviour
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
             targetButtonsGroup.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        endTurn();
     }
 
     public void Aura_Of_Protection()
@@ -429,7 +429,7 @@ public class Character : MonoBehaviour
         target.setStatusEffect("Protection_50", 2);
         Debug.Log("Protected " + target.name);
         InputPanel.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        endTurn();
     }
 
     public void Weakening_Curse()
@@ -439,8 +439,8 @@ public class Character : MonoBehaviour
         target.setStatusEffect("Weakness_20", 1);
         Debug.Log("Cursed " + target.name);
         InputPanel.SetActive(false);
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
-        
+        endTurn();
+
     }
 
     public void setHealth(int val)
@@ -474,6 +474,13 @@ public class Character : MonoBehaviour
     {
         currentTarget = target;
         Debug.Log(this.name + " is now targeting " + target.name);
+    }
+    
+        void endTurn()
+    {
+        battleSystem.GetComponent<BattleSystem>().nextPlayer = 
+        (battleSystem.GetComponent<BattleSystem>().nextPlayer + 1) % 4;
+        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
     }
 
 }

@@ -96,31 +96,34 @@ public class Enemy : MonoBehaviour
 
     public void startTurn()
     {
-        if (isdead)
-        {
-            endTurn();
-        }
         StartCoroutine(EnemyAttackRoutine());
     }
 
     private IEnumerator EnemyAttackRoutine()
     {
 
-        handleStatusEffects();
-
-        if (!stunned)
+        if (isdead)
         {
-            yield return new WaitForSeconds(2f);
-            Character target = playerChar1.GetComponent<Character>();
-            int damage = Random.Range(2, 6);
-            target.setHealth(target.health - damage);
-            Debug.Log(target.name + " health: " + target.health);
+            endTurn();
         }
         else
         {
-            Debug.Log("Stunnded, skipping turn");
+            handleStatusEffects();
+
+            if (!stunned)
+            {
+                yield return new WaitForSeconds(2f);
+                Character target = playerChar1.GetComponent<Character>();
+                int damage = Random.Range(2, 6);
+                target.setHealth(target.health - damage);
+                Debug.Log(target.name + " health: " + target.health);
+            }
+            else
+            {
+                Debug.Log("Stunnded, skipping turn");
+            }
+            endTurn();
         }
-        endTurn();
     }
 
 
@@ -200,6 +203,8 @@ public class Enemy : MonoBehaviour
 
     void endTurn()
     {
+        battleSystem.GetComponent<BattleSystem>().nextEnemy = 
+        (battleSystem.GetComponent<BattleSystem>().nextEnemy + 1) % 4;
         battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
     }
 

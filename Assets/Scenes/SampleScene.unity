@@ -5738,6 +5738,8 @@ MonoBehaviour:
   enemyChar4: {fileID: 1780222506}
   party: []
   enemies: []
+  nextPlayer: 0
+  nextEnemy: 0
   state: 0
 --- !u!1 &862501507
 GameObject:
@@ -12229,7 +12231,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 635456142}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: attack1
+        m_MethodName: Zephyrs_Call
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

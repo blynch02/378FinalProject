@@ -28,9 +28,9 @@ public class BattleSystem : MonoBehaviour
 
     public List<GameObject> enemies;
 
-    private int nextPlayer = 0;
+    public int nextPlayer = 0;
 
-    private int nextEnemy = 0;
+    public int nextEnemy = 0;
 
     public BattleState state;
     private int round;
@@ -101,7 +101,6 @@ private IEnumerator nextTurn()
     if (state == BattleState.PLAYERTURN)
     {
         Character currentPlayer = party[nextPlayer].GetComponent<Character>();
-        nextPlayer = (nextPlayer + 1) % party.Count;
         state = BattleState.ENEMYTURN;
 
         yield return new WaitForSeconds(0.1f); // Prevent immediate recursion
@@ -111,7 +110,6 @@ private IEnumerator nextTurn()
     else if (state == BattleState.ENEMYTURN)
     {
         Enemy currentEnemy = enemies[nextEnemy].GetComponent<Enemy>();
-        nextEnemy = (nextEnemy + 1) % enemies.Count;
         state = BattleState.PLAYERTURN;
 
         yield return new WaitForSeconds(0.1f); // Prevent immediate recursion
