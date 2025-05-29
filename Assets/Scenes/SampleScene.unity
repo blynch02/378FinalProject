@@ -587,7 +587,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Divine Intervention
 
-    
+
 
     Heal 1 party member for 4-8 HP
 
@@ -1383,6 +1383,8 @@ GameObject:
   - component: {fileID: 333357404}
   - component: {fileID: 333357403}
   - component: {fileID: 333357405}
+  - component: {fileID: 333357406}
+  - component: {fileID: 333357407}
   m_Layer: 0
   m_Name: Jester
   m_TagString: Untagged
@@ -1434,7 +1436,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4810702507026764722, guid: e529c81cac785417bbebee279fdfe941, type: 3}
+  m_Sprite: {fileID: 9072680028889410737, guid: e529c81cac785417bbebee279fdfe941, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1454,7 +1456,7 @@ Transform:
   m_GameObject: {fileID: 333357402}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -611, y: -64, z: 0}
+  m_LocalPosition: {x: -607, y: -64, z: 0}
   m_LocalScale: {x: 16.2, y: 16.72099, z: 0.15938638}
   m_ConstrainProportionsScale: 1
   m_Children: []
@@ -1477,6 +1479,42 @@ MonoBehaviour:
   InputPanel: {fileID: 358501111}
   enemy1: {fileID: 1598413507}
   battleSystem: {fileID: 836564126}
+--- !u!114 &333357406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333357402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ea4ffa512d4b3a896259ec37c9284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 2
+  bobAmount: 0.05
+--- !u!95 &333357407
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 333357402}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: addce039b496246a8948f863a6713289, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &333520143
 GameObject:
   m_ObjectHideFlags: 0
@@ -1672,10 +1710,10 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Sanctuary of light
 
-    
 
-    Heal party for 1-4 HP (Would be cool if
-    its a random value for each party member)
+
+    Heal party for 1-4 HP (Would be cool if its
+    a random value for each party member)
 
 
 '
@@ -2395,12 +2433,11 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Weakening Curse
 
-    
+
 
     Makes target take 20% more damage
 
-    Single
-    Target
+    Single Target
 
 '
   m_isRightToLeft: 0
@@ -3326,6 +3363,7 @@ GameObject:
   - component: {fileID: 635456144}
   - component: {fileID: 635456143}
   - component: {fileID: 635456142}
+  - component: {fileID: 635456145}
   m_Layer: 0
   m_Name: Asassin
   m_TagString: Untagged
@@ -3394,7 +3432,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4810702507026764722, guid: e529c81cac785417bbebee279fdfe941, type: 3}
+  m_Sprite: {fileID: 4158142999834925673, guid: 5e8259eba327bd34c9e2a71da8ce50d0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3414,12 +3452,26 @@ Transform:
   m_GameObject: {fileID: 635456141}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -161, y: -73, z: 0}
-  m_LocalScale: {x: 16.2, y: 16.72099, z: 0.15938638}
+  m_LocalPosition: {x: -192, y: -64, z: 0}
+  m_LocalScale: {x: -57.71863, y: 45.014053, z: 0.15938638}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &635456145
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 635456141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ea4ffa512d4b3a896259ec37c9284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 2
+  bobAmount: 0.05
 --- !u!1 &660593928
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,6 +3836,8 @@ GameObject:
   - component: {fileID: 791107908}
   - component: {fileID: 791107907}
   - component: {fileID: 791107906}
+  - component: {fileID: 791107909}
+  - component: {fileID: 791107910}
   m_Layer: 0
   m_Name: Wizard
   m_TagString: Untagged
@@ -3852,7 +3906,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4810702507026764722, guid: e529c81cac785417bbebee279fdfe941, type: 3}
+  m_Sprite: {fileID: 3275028520990625885, guid: 882def686899d40f984736224c305f2e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3872,12 +3926,48 @@ Transform:
   m_GameObject: {fileID: 791107905}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -312, y: -71, z: 0}
-  m_LocalScale: {x: 16.2, y: 16.72099, z: 0.15938638}
+  m_LocalPosition: {x: -310, y: -77, z: 0}
+  m_LocalScale: {x: 15.43212, y: 16.33808, z: 0.15938638}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &791107909
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791107905}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ea4ffa512d4b3a896259ec37c9284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 2
+  bobAmount: 0.05
+--- !u!95 &791107910
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 791107905}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 60e641432622241f0a921fb522377c68, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &800883348
 GameObject:
   m_ObjectHideFlags: 0
@@ -3889,6 +3979,7 @@ GameObject:
   - component: {fileID: 800883351}
   - component: {fileID: 800883350}
   - component: {fileID: 800883349}
+  - component: {fileID: 800883352}
   m_Layer: 0
   m_Name: Greg
   m_TagString: Untagged
@@ -3956,7 +4047,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3275028520990625885, guid: 882def686899d40f984736224c305f2e, type: 3}
+  m_Sprite: {fileID: 8596640243658272642, guid: f6482d88272bda74286d30e8c70298b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -3976,12 +4067,26 @@ Transform:
   m_GameObject: {fileID: 800883348}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 358, y: -90, z: 4.7269363}
-  m_LocalScale: {x: -14.2, y: 14.2, z: 14.2}
+  m_LocalPosition: {x: 366.8912, y: -73.9815, z: 4.7269363}
+  m_LocalScale: {x: -28.865774, y: 32.3137, z: 14.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &800883352
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 800883348}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ea4ffa512d4b3a896259ec37c9284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 2
+  bobAmount: 0.05
 --- !u!1 &822075553
 GameObject:
   m_ObjectHideFlags: 0
@@ -6013,14 +6118,14 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Sanctimonious Smite
 
-    
+
 
     5-8 damage
 
     90% Hit Chance
 
-    20%
-    chance to Stun
+    20% chance
+    to Stun
 
     Heal Self for 1-2 HP
 
@@ -6116,6 +6221,7 @@ GameObject:
   - component: {fileID: 1471319022}
   - component: {fileID: 1471319021}
   - component: {fileID: 1471319020}
+  - component: {fileID: 1471319023}
   m_Layer: 0
   m_Name: Leroy
   m_TagString: Untagged
@@ -6183,7 +6289,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3275028520990625885, guid: 882def686899d40f984736224c305f2e, type: 3}
+  m_Sprite: {fileID: 8596640243658272642, guid: f6482d88272bda74286d30e8c70298b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6203,12 +6309,26 @@ Transform:
   m_GameObject: {fileID: 1471319019}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 479, y: -90, z: 4.7269363}
-  m_LocalScale: {x: -14.2, y: 14.2, z: 14.2}
+  m_LocalPosition: {x: 515.3652, y: -74.2743, z: 4.7269363}
+  m_LocalScale: {x: -29.748228, y: 32.29749, z: 14.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1471319023
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1471319019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ea4ffa512d4b3a896259ec37c9284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 2
+  bobAmount: 0.05
 --- !u!1 &1520976421
 GameObject:
   m_ObjectHideFlags: 0
@@ -6404,16 +6524,16 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Holy Rebuke
 
-    
+
 
     3-6 damage
 
     90% hit chance
 
-    70% chance
-    to Stun
+    70% chance to Stun
 
-    +50% damage to Stunned
+    +50%
+    damage to Stunned
 
     Single Target
 
@@ -6628,6 +6748,7 @@ GameObject:
   - component: {fileID: 1598413509}
   - component: {fileID: 1598413508}
   - component: {fileID: 1598413510}
+  - component: {fileID: 1598413511}
   m_Layer: 0
   m_Name: Brad
   m_TagString: Untagged
@@ -6679,7 +6800,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3275028520990625885, guid: 882def686899d40f984736224c305f2e, type: 3}
+  m_Sprite: {fileID: 8596640243658272642, guid: f6482d88272bda74286d30e8c70298b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6699,8 +6820,8 @@ Transform:
   m_GameObject: {fileID: 1598413507}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 617, y: -88, z: 4.7269363}
-  m_LocalScale: {x: -14.2, y: 14.2, z: 14.2}
+  m_LocalPosition: {x: 666.3831, y: -74.9633, z: 4.7269363}
+  m_LocalScale: {x: -29.30645, y: 31.86511, z: 14.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1216198058}
@@ -6721,6 +6842,20 @@ MonoBehaviour:
   isdead: 0
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
+--- !u!114 &1598413511
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1598413507}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ea4ffa512d4b3a896259ec37c9284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 2
+  bobAmount: 0.05
 --- !u!1 &1682228755
 GameObject:
   m_ObjectHideFlags: 0
@@ -6732,6 +6867,8 @@ GameObject:
   - component: {fileID: 1682228758}
   - component: {fileID: 1682228757}
   - component: {fileID: 1682228756}
+  - component: {fileID: 1682228759}
+  - component: {fileID: 1682228760}
   m_Layer: 0
   m_Name: Paladin
   m_TagString: Untagged
@@ -6800,7 +6937,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4810702507026764722, guid: e529c81cac785417bbebee279fdfe941, type: 3}
+  m_Sprite: {fileID: 4113829005332862926, guid: 766093353695e444f87194deccaa4121, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -6820,12 +6957,48 @@ Transform:
   m_GameObject: {fileID: 1682228755}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -466, y: -66, z: 0}
-  m_LocalScale: {x: 16.2, y: 16.72099, z: 0.15938638}
+  m_LocalPosition: {x: -471, y: -65, z: 0}
+  m_LocalScale: {x: 43.514824, y: 38.386375, z: 0.15938638}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1682228759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682228755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ea4ffa512d4b3a896259ec37c9284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 2
+  bobAmount: 0.05
+--- !u!95 &1682228760
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1682228755}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 86c11f2fb6e3e4af1a8a019aa2ee9a09, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &1748324730
 GameObject:
   m_ObjectHideFlags: 0
@@ -7317,6 +7490,7 @@ GameObject:
   - component: {fileID: 1780222509}
   - component: {fileID: 1780222508}
   - component: {fileID: 1780222507}
+  - component: {fileID: 1780222510}
   m_Layer: 0
   m_Name: Bill
   m_TagString: Untagged
@@ -7384,7 +7558,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 3275028520990625885, guid: 882def686899d40f984736224c305f2e, type: 3}
+  m_Sprite: {fileID: 8596640243658272642, guid: f6482d88272bda74286d30e8c70298b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -7404,12 +7578,26 @@ Transform:
   m_GameObject: {fileID: 1780222506}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 220, y: -90, z: 4.7269363}
-  m_LocalScale: {x: -14.2, y: 14.2, z: 14.2}
+  m_LocalPosition: {x: 213.127, y: -74.2903, z: 4.7269363}
+  m_LocalScale: {x: -29.748217, y: 33.204693, z: 14.2}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1780222510
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780222506}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 780ea4ffa512d4b3a896259ec37c9284, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bobSpeed: 2
+  bobAmount: 0.05
 --- !u!1 &1780624967
 GameObject:
   m_ObjectHideFlags: 0
@@ -8685,7 +8873,7 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Dragons Breath
 
-    
+
 
     1-5 damage
 
