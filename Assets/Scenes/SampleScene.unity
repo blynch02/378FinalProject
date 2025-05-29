@@ -5353,7 +5353,11 @@ MonoBehaviour:
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   healthBarAnchor: {fileID: 1841550259}
-  targetButton: {fileID: 703494376}
+  targetButtons:
+  - {fileID: 399000395}
+  - {fileID: 1800229178}
+  - {fileID: 1745999813}
+  - {fileID: 703494376}
   maxHealth: 10
 --- !u!212 &800883350
 SpriteRenderer:
@@ -9173,7 +9177,11 @@ MonoBehaviour:
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   healthBarAnchor: {fileID: 304862441}
-  targetButton: {fileID: 1403178440}
+  targetButtons:
+  - {fileID: 1108570752}
+  - {fileID: 249606084}
+  - {fileID: 1343530352}
+  - {fileID: 1403178440}
   maxHealth: 10
 --- !u!212 &1471319021
 SpriteRenderer:
@@ -10355,7 +10363,11 @@ MonoBehaviour:
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   healthBarAnchor: {fileID: 1685600230}
-  targetButton: {fileID: 921175083}
+  targetButtons:
+  - {fileID: 921175083}
+  - {fileID: 1626067707}
+  - {fileID: 773929074}
+  - {fileID: 1425080413}
   maxHealth: 10
 --- !u!1 &1609454367
 GameObject:
@@ -11329,7 +11341,11 @@ MonoBehaviour:
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   healthBarAnchor: {fileID: 748927710}
-  targetButton: {fileID: 1480463926}
+  targetButtons:
+  - {fileID: 767853535}
+  - {fileID: 1400489995}
+  - {fileID: 464103084}
+  - {fileID: 1480463926}
   maxHealth: 10
 --- !u!212 &1780222508
 SpriteRenderer:

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
@@ -24,7 +25,8 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private GameObject healthBarPrefab;
     [SerializeField] private Transform healthBarAnchor;
-    [SerializeField] private GameObject targetButton;
+    [SerializeField] private GameObject[] targetButtons;
+
 
 
     private HealthBar healthBar;
@@ -63,13 +65,29 @@ public class Enemy : MonoBehaviour
         {
             isdead = true;
 
-            if (targetButton != null)
-                targetButton.SetActive(false);
+            if (targetButtons != null)
+                toggleButtons();
 
             Destroy(healthBar?.gameObject);
-            Destroy(this.gameObject);
-            Destroy(targetButton);
+            destoyButtons();
+            Destroy(gameObject.GetComponent<SpriteRenderer>());
             battleSystem.GetComponent<BattleSystem>().checkEnemies();
+        }
+    }
+
+    private void destoyButtons()
+    {
+        foreach (GameObject button in targetButtons)
+        {
+            Destroy(button);
+        }
+    }
+
+    private void toggleButtons()
+    {
+        foreach (GameObject button in targetButtons)
+        {
+            button.SetActive(!button.activeSelf);
         }
     }
 
@@ -78,15 +96,16 @@ public class Enemy : MonoBehaviour
 
     public void startTurn()
     {
+        if (isdead)
+        {
+            endTurn();
+        }
         StartCoroutine(EnemyAttackRoutine());
     }
 
     private IEnumerator EnemyAttackRoutine()
     {
-        if (isdead)
-        {
-            battleSystem.GetComponent<BattleSystem>().nextTurn();
-        }
+
         handleStatusEffects();
 
         if (!stunned)
@@ -181,7 +200,7 @@ public class Enemy : MonoBehaviour
 
     void endTurn()
     {
-        battleSystem.GetComponent<BattleSystem>().nextTurn();
+        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
     }
 
     public void setStatusEffect(string effect, int dur)
