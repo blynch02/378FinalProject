@@ -45,6 +45,7 @@ public class Character : MonoBehaviour
     {
         //Initialize status effect dictionary
         InputPanel.SetActive(false);
+        targetButtonsGroup.SetActive(false);
         health = maxHealth;
         GameObject hb = Instantiate(healthBarPrefab, healthBarAnchor ? healthBarAnchor.position : transform.position + Vector3.up * 1.5f, Quaternion.identity, transform);
         healthBar = hb.GetComponent<HealthBar>();
@@ -115,7 +116,7 @@ public class Character : MonoBehaviour
             effect_dur["Burn_4"] -= 1;
 
         }
-        if (effect_dur["Protection_50"] > 0)
+        if (effect_dur.ContainsKey("Protection_50") && effect_dur["Protection_50"] > 0)
         {
             protection = true;
             effect_dur["Protection_50"] -= 1;
@@ -125,7 +126,7 @@ public class Character : MonoBehaviour
             protection = false;
         }
 
-        if (effect_dur["Strength_20"] > 0)
+        if (effect_dur.ContainsKey("Strength_20") && effect_dur["Strength_20"] > 0)
         {
             strength = true;
             effect_dur["Strength_20"] -= 1;
@@ -135,7 +136,7 @@ public class Character : MonoBehaviour
             strength = false;
         }
 
-        if (effect_dur["Weakness_20"] > 0)
+        if (effect_dur.ContainsKey("Weakness_20") && effect_dur["Weakness_20"] > 0)
         {
             weakness = true;
             effect_dur["Weakness_20"] -= 1;
@@ -145,7 +146,7 @@ public class Character : MonoBehaviour
             weakness = false;
         }
 
-        if (effect_dur["Terrified_30"] > 0)
+        if (effect_dur.ContainsKey("Terrified_30") && effect_dur["Terrified_30"] > 0)
         {
             terrified = true;
             effect_dur["Terrified_30"] -= 1;
