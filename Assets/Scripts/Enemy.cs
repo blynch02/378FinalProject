@@ -65,9 +65,6 @@ public class Enemy : MonoBehaviour
         {
             isdead = true;
 
-            if (targetButtons != null)
-                toggleButtons();
-
             Destroy(healthBar?.gameObject);
             destoyButtons();
             Destroy(gameObject.GetComponent<SpriteRenderer>());
@@ -82,17 +79,6 @@ public class Enemy : MonoBehaviour
             Destroy(button);
         }
     }
-
-    private void toggleButtons()
-    {
-        foreach (GameObject button in targetButtons)
-        {
-            button.SetActive(!button.activeSelf);
-        }
-    }
-
-
-
 
     public void startTurn()
     {
@@ -201,12 +187,27 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    void endTurn()
+void endTurn()
+{
+    BattleSystem bs = battleSystem.GetComponent<BattleSystem>();
+
+    int originalIndex = bs.nextEnemy;
+    int count = bs.enemies.Count;
+
+    // Advance to next alive enemy
+    for (int i = 1; i <= count; i++)
     {
-        battleSystem.GetComponent<BattleSystem>().nextEnemy = 
-        (battleSystem.GetComponent<BattleSystem>().nextEnemy + 1) % 4;
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
+        int index = (originalIndex + i) % count;
+        Enemy e = bs.enemies[index].GetComponent<Enemy>();
+        if (!e.isdead)
+        {
+            bs.nextEnemy = index;
+            break;
+        }
     }
+
+    bs.TriggerNextTurn();
+}
 
     public void setStatusEffect(string effect, int dur)
     {

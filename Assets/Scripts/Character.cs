@@ -203,9 +203,10 @@ public class Character : MonoBehaviour
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
+        {
             targetButtonsGroup.SetActive(false);
+        }
         endTurn();
-
     }
 
     public void War_Song()
@@ -217,7 +218,9 @@ public class Character : MonoBehaviour
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
+        {
             targetButtonsGroup.SetActive(false);
+        }
         endTurn();
     }
 
@@ -233,6 +236,12 @@ public class Character : MonoBehaviour
         {
             setHealth(health - UnityEngine.Random.Range(1, 4));
         }
+        InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+        {
+            targetButtonsGroup.SetActive(false);
+        }
+        endTurn();
     }
 
     public void Ace_In_The_Sleeve()
@@ -268,7 +277,9 @@ public class Character : MonoBehaviour
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
+        {
             targetButtonsGroup.SetActive(false);
+        }
         endTurn();
     }
 
@@ -279,6 +290,10 @@ public class Character : MonoBehaviour
         target.setHealth(target.health + healVal);
         Debug.Log("Healed " + target.name + "for " + healVal);
         InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+        {
+            targetButtonsGroup.SetActive(false);
+        }
         endTurn();
     }
 
@@ -286,14 +301,19 @@ public class Character : MonoBehaviour
     {
         foreach (GameObject partymember in battleSystem.GetComponent<BattleSystem>().party)
         {
-            int healVal = UnityEngine.Random.Range(1, 4);
-            Debug.Log("Healed: " + partymember.name + "For " + healVal);
             Character member = partymember.GetComponent<Character>();
-            member.setHealth(member.health += healVal);
+            if (!member.isdead)
+            {
+                int healVal = UnityEngine.Random.Range(1, 4);
+                Debug.Log("Healed: " + partymember.name + "For " + healVal);
+                member.setHealth(member.health += healVal);
+            }
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
+        {
             targetButtonsGroup.SetActive(false);
+        }
         endTurn();
     }
 
@@ -336,7 +356,9 @@ public class Character : MonoBehaviour
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
+        {
             targetButtonsGroup.SetActive(false);
+        }
         endTurn();
     }
 
@@ -382,7 +404,9 @@ public class Character : MonoBehaviour
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
+        {
             targetButtonsGroup.SetActive(false);
+        }
         endTurn();
     }
 
@@ -398,7 +422,9 @@ public class Character : MonoBehaviour
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
+        {
             targetButtonsGroup.SetActive(false);
+        }
         endTurn();
     }
 
@@ -419,7 +445,9 @@ public class Character : MonoBehaviour
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
+        {
             targetButtonsGroup.SetActive(false);
+        }
         endTurn();
     }
 
@@ -429,6 +457,10 @@ public class Character : MonoBehaviour
         target.setStatusEffect("Protection_50", 2);
         Debug.Log("Protected " + target.name);
         InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+        {
+            targetButtonsGroup.SetActive(false);
+        }
         endTurn();
     }
 
@@ -439,6 +471,10 @@ public class Character : MonoBehaviour
         target.setStatusEffect("Weakness_20", 1);
         Debug.Log("Cursed " + target.name);
         InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+        {
+            targetButtonsGroup.SetActive(false);
+        }
         endTurn();
 
     }
@@ -476,11 +512,27 @@ public class Character : MonoBehaviour
         Debug.Log(this.name + " is now targeting " + target.name);
     }
     
-        void endTurn()
+    void endTurn()
     {
-        battleSystem.GetComponent<BattleSystem>().nextPlayer = 
-        (battleSystem.GetComponent<BattleSystem>().nextPlayer + 1) % 4;
-        battleSystem.GetComponent<BattleSystem>().TriggerNextTurn();
-    }
+        currentTarget = null;
+        BattleSystem bs = battleSystem.GetComponent<BattleSystem>();
 
+        int originalIndex = bs.nextPlayer;
+        int count = bs.party.Count;
+
+        for (int i = 1; i <= count; i++)
+        {
+            int index = (originalIndex + i) % count;
+            Character e = bs.party[index].GetComponent<Character>();
+            if (!e.isdead)
+            {
+                bs.nextPlayer = index;
+                break;
+            }
+        }
+
+        bs.TriggerNextTurn();
+    }
 }
+
+
