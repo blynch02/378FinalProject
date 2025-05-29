@@ -54,6 +54,7 @@ public class Character : MonoBehaviour
         effect_dur.Add("Stun", 0);
         effect_dur.Add("Bleed_1", 0);
         effect_dur.Add("Bleed_2", 0);
+        effect_dur.Add("Bleed_4", 0);
         effect_dur.Add("Burn_4", 0);
         effect_dur.Add("Protection_50", 0);
         effect_dur.Add("Strength_20", 0);
@@ -110,6 +111,13 @@ public class Character : MonoBehaviour
             setHealth(health - 2);
             Debug.Log("Took 2pts of bleed damage! " + effect_dur["Bleed_2"] + " turns remaining.");
             effect_dur["Bleed_2"] -= 1;
+        }
+
+        if (effect_dur.ContainsKey("Bleed_4") && effect_dur["Bleed_4"] > 0)
+        {
+            setHealth(health - 2);
+            Debug.Log("Took 4pts of bleed damage! " + effect_dur["Bleed_4"] + " turns remaining.");
+            effect_dur["Bleed_4"] -= 1;
         }
 
         if (effect_dur.ContainsKey("Burn_4") && effect_dur["Burn_4"] > 0)

@@ -1,5 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Mathematics;
+using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -27,13 +30,14 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform healthBarAnchor;
     [SerializeField] private GameObject[] targetButtons;
 
-
+    private List<Action> attacks;
 
     private HealthBar healthBar;
     public int maxHealth = 10;
 
     void Start()
     {
+        attacks = new List<Action> { enemyAttack1, enemyAttack2, enemyAttack3 };
         health = maxHealth;
 
         GameObject hb = Instantiate(healthBarPrefab, transform);
@@ -46,6 +50,7 @@ public class Enemy : MonoBehaviour
         effect_dur.Add("Stun", 0);
         effect_dur.Add("Bleed_1", 0);
         effect_dur.Add("Bleed_2", 0);
+        effect_dur.Add("Bleed_4", 0);
         effect_dur.Add("Burn_4", 0);
         effect_dur.Add("Protection_50", 0);
         effect_dur.Add("Strength_20", 0);
@@ -99,19 +104,161 @@ public class Enemy : MonoBehaviour
             if (!stunned)
             {
                 yield return new WaitForSeconds(2f);
-                Character target = playerChar1.GetComponent<Character>();
-                int damage = Random.Range(2, 6);
-                target.setHealth(target.health - damage);
-                Debug.Log(target.name + " health: " + target.health);
+                int attackNum = UnityEngine.Random.Range(0, 2);
+                attacks[attackNum]();
             }
-            else
-            {
-                Debug.Log("Stunnded, skipping turn");
-            }
-            endTurn();
         }
     }
 
+    void enemyAttack1()
+    {
+        BattleSystem bs = battleSystem.GetComponent<BattleSystem>();
+        Character target = null;
+        while (target == null || target.isdead)
+        {
+            target = bs.party[UnityEngine.Random.Range(0, 3)].GetComponent<Character>();
+        }
+        int damage = UnityEngine.Random.Range(4, 9);
+        int accuracyThreshold = 10;
+        int stunThreshold = 20;
+        if (strength)
+        {
+            damage = (int)math.ceil(damage * 1.2);
+        }
+        if (weakness)
+        {
+            damage = (int)math.ceil(damage * .8);
+        }
+        if (terrified)
+        {
+            accuracyThreshold = accuracyThreshold + 30;
+        }
+        if (target.getStatusEffect("Protection_50") > 0)
+        {
+            damage = (int)math.ceil(damage * .5);
+        }
+        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        {
+            Debug.Log(this.name + ": ATTACK: Lumbering Strike WENT THROUGH");
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");
+            target.setHealth(target.health - damage);
+            Debug.Log("Enemy Health: " + target.health);
+            if (UnityEngine.Random.Range(0, 100) >= stunThreshold)
+            {
+                Debug.Log(target.name + "Stunned");
+                target.setStatusEffect("Stun", 1);
+            }
+            else
+            {
+                Debug.Log("Missed Stun Chance");
+            }
+        }
+        else
+        {
+            Debug.Log("MISSED ATTACK");
+        }
+        endTurn();
+    }
+
+    void enemyAttack2()
+    {
+        BattleSystem bs = battleSystem.GetComponent<BattleSystem>();
+        Character target = null;
+        while (target == null || target.isdead)
+        {
+            target = bs.party[UnityEngine.Random.Range(0, 3)].GetComponent<Character>();
+        }
+        int damage = UnityEngine.Random.Range(8, 14);
+        int accuracyThreshold = 10;
+        int stunThreshold = 20;
+        if (strength)
+        {
+            damage = (int)math.ceil(damage * 1.2);
+        }
+        if (weakness)
+        {
+            damage = (int)math.ceil(damage * .8);
+        }
+        if (terrified)
+        {
+            accuracyThreshold = accuracyThreshold + 30;
+        }
+        if (target.getStatusEffect("Protection_50") > 0)
+        {
+            damage = (int)math.ceil(damage * .5);
+        }
+        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        {
+            Debug.Log(this.name + ": ATTACK: Reckless Charge WENT THROUGH");
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");
+            target.setHealth(target.health - damage);
+            Debug.Log("Enemy Health: " + target.health);
+            if (UnityEngine.Random.Range(0, 100) >= stunThreshold)
+            {
+                Debug.Log("Stunned self");
+                setStatusEffect("Stun", 1);
+            }
+            else
+            {
+                Debug.Log("Missed Stun Chance");
+            }
+        }
+        else
+        {
+            Debug.Log("MISSED ATTACK");
+        }
+        endTurn();
+    }
+
+    void enemyAttack3()
+    {
+        BattleSystem bs = battleSystem.GetComponent<BattleSystem>();
+        Character target = null;
+        while (target == null || target.isdead)
+        {
+            target = bs.party[UnityEngine.Random.Range(0, 3)].GetComponent<Character>();
+        }
+        int damage = UnityEngine.Random.Range(2, 5);
+        int accuracyThreshold = 10;
+        int bleedThreshold = 10;
+        if (strength)
+        {
+            damage = (int)math.ceil(damage * 1.2);
+        }
+        if (weakness)
+        {
+            damage = (int)math.ceil(damage * .8);
+        }
+        if (terrified)
+        {
+            accuracyThreshold = accuracyThreshold + 30;
+        }
+        if (target.getStatusEffect("Protection_50") > 0)
+        {
+            damage = (int)math.ceil(damage * .5);
+        }
+        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        {
+            Debug.Log(this.name + ": ATTACK: Lacerate WENT THROUGH");
+            Debug.Log($"Updating health bar: {health} / {maxHealth}");
+            target.setHealth(target.health - damage);
+            Debug.Log("Enemy Health: " + target.health);
+            if (UnityEngine.Random.Range(0, 100) >= bleedThreshold)
+            {
+                Debug.Log(target.name + "Bleeding");
+                target.setStatusEffect("Bleed_4", 2);
+            }
+            else
+            {
+                Debug.Log("Missed Stun Chance");
+            }
+        }
+        else
+        {
+            Debug.Log("MISSED ATTACK");
+        }
+        endTurn();
+    }
 
     void handleStatusEffects()
     {
@@ -137,6 +284,13 @@ public class Enemy : MonoBehaviour
             setHealth(health - 2);
             Debug.Log("Took 2pts of bleed damage! " + effect_dur["Bleed_2"] + " turns remaining.");
             effect_dur["Bleed_2"] -= 1;
+        }
+
+        if (effect_dur.ContainsKey("Bleed_4") && effect_dur["Bleed_4"] > 0)
+        {
+            setHealth(health - 2);
+            Debug.Log("Took 4pts of bleed damage! " + effect_dur["Bleed_4"] + " turns remaining.");
+            effect_dur["Bleed_4"] -= 1;
         }
 
         if (effect_dur.ContainsKey("Burn_4") && effect_dur["Burn_4"] > 0)

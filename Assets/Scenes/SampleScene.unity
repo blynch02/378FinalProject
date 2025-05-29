@@ -5347,7 +5347,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30471838ac30e204e9ab4695fbb97a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 37
   isdead: 0
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
@@ -5358,7 +5358,7 @@ MonoBehaviour:
   - {fileID: 1800229178}
   - {fileID: 1745999813}
   - {fileID: 703494376}
-  maxHealth: 10
+  maxHealth: 37
 --- !u!212 &800883350
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9173,7 +9173,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30471838ac30e204e9ab4695fbb97a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 26
   isdead: 0
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
@@ -9184,7 +9184,7 @@ MonoBehaviour:
   - {fileID: 249606084}
   - {fileID: 1343530352}
   - {fileID: 1403178440}
-  maxHealth: 10
+  maxHealth: 26
 --- !u!212 &1471319021
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -10359,7 +10359,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30471838ac30e204e9ab4695fbb97a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 32
   isdead: 0
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
@@ -10370,7 +10370,7 @@ MonoBehaviour:
   - {fileID: 1626067707}
   - {fileID: 773929074}
   - {fileID: 1425080413}
-  maxHealth: 10
+  maxHealth: 32
 --- !u!1 &1609454367
 GameObject:
   m_ObjectHideFlags: 0
@@ -11337,7 +11337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30471838ac30e204e9ab4695fbb97a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 10
+  health: 19
   isdead: 0
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
@@ -11348,7 +11348,7 @@ MonoBehaviour:
   - {fileID: 1400489995}
   - {fileID: 464103084}
   - {fileID: 1480463926}
-  maxHealth: 10
+  maxHealth: 19
 --- !u!212 &1780222508
 SpriteRenderer:
   m_ObjectHideFlags: 0
