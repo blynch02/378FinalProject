@@ -85,10 +85,9 @@ public class Character : MonoBehaviour
         }
     }
 
-
     void handleStatusEffects()
     {
-        if (effect_dur.ContainsKey("Stun") && effect_dur["Stun"] > 0)
+        if (effect_dur["Stun"] > 0)
         {
             stunned = true;
             effect_dur["Stun"] -= 1;
@@ -100,33 +99,30 @@ public class Character : MonoBehaviour
 
         if (effect_dur.ContainsKey("Bleed_1") && effect_dur["Bleed_1"] > 0)
         {
-            Debug.Log($"Updating health bar: {health} / {maxHealth}");
             setHealth(health - 1);
-            Debug.Log("Took 1pt of bleed damage! " + effect_dur["Bleed_1"] + " turns remaining.");
             effect_dur["Bleed_1"] -= 1;
+            Debug.Log("Took 1pt of bleed damage! " + effect_dur["Bleed_1"] + " turns remaining.");
         }
 
         if (effect_dur.ContainsKey("Bleed_2") && effect_dur["Bleed_2"] > 0)
         {
-            Debug.Log($"Updating health bar: {health} / {maxHealth}");
             setHealth(health - 2);
-            Debug.Log("Took 2pts of bleed damage! " + effect_dur["Bleed_2"] + " turns remaining.");
             effect_dur["Bleed_2"] -= 1;
+            Debug.Log("Took 2pts of bleed damage! " + effect_dur["Bleed_2"] + " turns remaining.");
         }
 
         if (effect_dur.ContainsKey("Bleed_4") && effect_dur["Bleed_4"] > 0)
         {
             setHealth(health - 2);
-            Debug.Log("Took 4pts of bleed damage! " + effect_dur["Bleed_4"] + " turns remaining.");
             effect_dur["Bleed_4"] -= 1;
+            Debug.Log("Took 4pts of bleed damage! " + effect_dur["Bleed_4"] + " turns remaining.");
         }
 
         if (effect_dur.ContainsKey("Burn_4") && effect_dur["Burn_4"] > 0)
         {
-            Debug.Log($"Updating health bar: {health} / {maxHealth}");
             setHealth(health - 4);
-            Debug.Log("Took 4pts of burn damage! " + effect_dur["Burn_4"] + " turns remaining.");
             effect_dur["Burn_4"] -= 1;
+            Debug.Log("Took 4pts of burn damage! " + effect_dur["Burn_4"] + " turns remaining.");
 
         }
         if (effect_dur.ContainsKey("Protection_50") && effect_dur["Protection_50"] > 0)
@@ -169,7 +165,6 @@ public class Character : MonoBehaviour
             terrified = false;
         }
     }
-
     public void Reap_What_You_Sow()
     {
         if (currentTarget == null) return;
@@ -424,7 +419,7 @@ public class Character : MonoBehaviour
         foreach (GameObject enemy in battleSystem.GetComponent<BattleSystem>().enemies)
         {
             int damage = UnityEngine.Random.Range(1, 5);
-            Debug.Log("Healed: " + enemy.name + "For " + damage);
+            Debug.Log("Burned: " + enemy.name + "For " + damage);
             Enemy member = enemy.GetComponent<Enemy>();
             member.setHealth(member.health -= damage);
             member.setStatusEffect("Burn_4", 2);

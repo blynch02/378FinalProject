@@ -107,6 +107,10 @@ public class Enemy : MonoBehaviour
                 int attackNum = UnityEngine.Random.Range(0, 2);
                 attacks[attackNum]();
             }
+            else
+            {
+                endTurn();
+            }
         }
     }
 
@@ -275,29 +279,29 @@ public class Enemy : MonoBehaviour
         if (effect_dur.ContainsKey("Bleed_1") && effect_dur["Bleed_1"] > 0)
         {
             setHealth(health - 1);
-            Debug.Log("Took 1pt of bleed damage! " + effect_dur["Bleed_1"] + " turns remaining.");
             effect_dur["Bleed_1"] -= 1;
+            Debug.Log("Took 1pt of bleed damage! " + effect_dur["Bleed_1"] + " turns remaining.");
         }
 
         if (effect_dur.ContainsKey("Bleed_2") && effect_dur["Bleed_2"] > 0)
         {
             setHealth(health - 2);
-            Debug.Log("Took 2pts of bleed damage! " + effect_dur["Bleed_2"] + " turns remaining.");
             effect_dur["Bleed_2"] -= 1;
+            Debug.Log("Took 2pts of bleed damage! " + effect_dur["Bleed_2"] + " turns remaining.");
         }
 
         if (effect_dur.ContainsKey("Bleed_4") && effect_dur["Bleed_4"] > 0)
         {
             setHealth(health - 2);
-            Debug.Log("Took 4pts of bleed damage! " + effect_dur["Bleed_4"] + " turns remaining.");
             effect_dur["Bleed_4"] -= 1;
+            Debug.Log("Took 4pts of bleed damage! " + effect_dur["Bleed_4"] + " turns remaining.");
         }
 
         if (effect_dur.ContainsKey("Burn_4") && effect_dur["Burn_4"] > 0)
         {
             setHealth(health - 4);
-            Debug.Log("Took 4pts of burn damage! " + effect_dur["Burn_4"] + " turns remaining.");
             effect_dur["Burn_4"] -= 1;
+            Debug.Log("Took 4pts of burn damage! " + effect_dur["Burn_4"] + " turns remaining.");
 
         }
         if (effect_dur.ContainsKey("Protection_50") && effect_dur["Protection_50"] > 0)
