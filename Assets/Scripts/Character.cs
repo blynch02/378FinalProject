@@ -21,8 +21,8 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject healthBarPrefab;
     [SerializeField] private GameObject currentTarget;
     [SerializeField] private GameObject targetButtonsGroup;
-
-
+    [SerializeField] private List<UnityEngine.UI.Button> targetButtons;
+    private UnityEngine.UI.Button selectedButton;
 
     private HealthBar healthBar;
 
@@ -61,6 +61,7 @@ public class Character : MonoBehaviour
         effect_dur.Add("Weakness_20", 0);
         effect_dur.Add("Terrified_30", 0);
     }
+    
 
     public void startTurn()
     {
@@ -518,8 +519,25 @@ public class Character : MonoBehaviour
     {
         currentTarget = target;
         Debug.Log(this.name + " is now targeting " + target.name);
+
+        foreach (var btn in targetButtons)
+        {
+            TMPro.TextMeshProUGUI txt = btn.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            if (btn.name.Contains(target.name))
+            {
+                txt.text = "Selected";
+                btn.image.color = Color.green;
+                selectedButton = btn;
+            }
+            else
+            {
+                txt.text = btn.name;
+                btn.image.color = Color.white;
+            }
+        }
     }
-    
+
+
     void endTurn()
     {
         currentTarget = null;
@@ -538,7 +556,13 @@ public class Character : MonoBehaviour
                 break;
             }
         }
-
+        if (selectedButton != null)
+        {
+            var txt = selectedButton.GetComponentInChildren<TMPro.TextMeshProUGUI>();
+            txt.text = selectedButton.name;
+            selectedButton.image.color = Color.white;
+            selectedButton = null;
+        }
         bs.TriggerNextTurn();
     }
 }
