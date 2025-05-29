@@ -204,7 +204,7 @@ public class Character : MonoBehaviour
         if (animator != null)
         {
             // Ensure you have an Animator trigger named "DoReapWhatYouSow"
-            animator.SetTrigger("DoReapWhatYouSow"); 
+            animator.SetBool("Reaping", true); 
         }
         else
         {
@@ -223,6 +223,7 @@ public class Character : MonoBehaviour
         {
             spriteBobber.SetBobbing(true); // Re-enable bobbing
         }
+        animator.SetBool("Reaping", false);
         ExecuteReapWhatYouSowLogic();
     }
 

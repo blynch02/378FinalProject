@@ -1815,7 +1815,6 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   targetButtonsGroup: {fileID: 1974602045}
   targetButtons: []
-  targetButtons: []
   healthBarAnchor: {fileID: 1419197156}
   maxHealth: 23
 --- !u!95 &333357406
@@ -3675,7 +3674,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 635456142}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: Reap_What_You_Sow
+        m_MethodName: Sanctimonious_Smite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6403,7 +6402,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 635456142}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: Reap_What_You_Sow
+        m_MethodName: Sanctimonious_Smite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -12698,7 +12697,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 635456142}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: Reap_What_You_Sow
+        m_MethodName: Sanctimonious_Smite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13459,7 +13458,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 635456142}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: Reap_What_You_Sow
+        m_MethodName: Sanctimonious_Smite
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
