@@ -752,7 +752,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 141028484}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1682228756}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Sanctimonious_Smite
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &141028484
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -876,7 +888,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 791107906}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: attack1
+        m_MethodName: Dragons_Breath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -2335,7 +2347,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 486906829}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 791107906}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Zephyrs_Call
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &486906829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3280,7 +3304,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 552061026}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1682228756}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Sanctuary_Of_Light
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &552061026
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4338,7 +4374,8 @@ MonoBehaviour:
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
-  healthBarAnchor: {fileID: 519588601}
+  healthBarAnchor: {fileID: 1841550259}
+  targetButton: {fileID: 703494376}
   maxHealth: 10
 --- !u!212 &800883350
 SpriteRenderer:
@@ -4496,7 +4533,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1682228756}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: attack1
+        m_MethodName: Divine_Intervention
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4718,6 +4755,7 @@ MonoBehaviour:
   enemyChar3: {fileID: 800883348}
   enemyChar4: {fileID: 1780222506}
   party: []
+  enemies: []
   state: 0
 --- !u!1 &862501507
 GameObject:
@@ -6076,7 +6114,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1247276211}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 791107906}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Aura_Of_Protection
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1247276211
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6466,7 +6516,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1321533768}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 791107906}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Weakening_Curse
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1321533768
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7048,7 +7110,8 @@ MonoBehaviour:
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
-  healthBarAnchor: {fileID: 187404255}
+  healthBarAnchor: {fileID: 304862441}
+  targetButton: {fileID: 1403178440}
   maxHealth: 10
 --- !u!212 &1471319021
 SpriteRenderer:
@@ -7918,7 +7981,8 @@ MonoBehaviour:
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
-  healthBarAnchor: {fileID: 1455373567}
+  healthBarAnchor: {fileID: 1685600230}
+  targetButton: {fileID: 921175083}
   maxHealth: 10
 --- !u!1 &1682228755
 GameObject:
@@ -8503,7 +8567,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1769704473}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1682228756}
+        m_TargetAssemblyTypeName: Character, Assembly-CSharp
+        m_MethodName: Holy_Rebuke
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1769704473
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8577,7 +8653,8 @@ MonoBehaviour:
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
-  healthBarAnchor: {fileID: 178153571}
+  healthBarAnchor: {fileID: 748927710}
+  targetButton: {fileID: 1480463926}
   maxHealth: 10
 --- !u!212 &1780222508
 SpriteRenderer:
