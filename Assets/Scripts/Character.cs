@@ -41,6 +41,10 @@ public class Character : MonoBehaviour
 
     private bool terrified = false;
 
+    // Variables for animation handling
+    private Animator animator;
+    private SimpleSpriteBob spriteBobber;
+
     void Start()
     {
         //Initialize status effect dictionary
@@ -60,6 +64,19 @@ public class Character : MonoBehaviour
         effect_dur.Add("Strength_20", 0);
         effect_dur.Add("Weakness_20", 0);
         effect_dur.Add("Terrified_30", 0);
+
+        // Initialize Animator and SimpleSpriteBob components
+        animator = GetComponent<Animator>();
+        spriteBobber = GetComponent<SimpleSpriteBob>();
+
+        if (animator == null)
+        {
+            Debug.LogWarning(this.name + " is missing an Animator component.");
+        }
+        if (spriteBobber == null)
+        {
+            Debug.LogWarning(this.name + " is missing a SimpleSpriteBob component.");
+        }
     }
     
 
@@ -172,12 +189,74 @@ public class Character : MonoBehaviour
 
     public void Reap_What_You_Sow()
     {
-        if (currentTarget == null) return;
+        if (currentTarget == null)
+        {
+            Debug.LogWarning(this.name + ": Reap_What_You_Sow called with no currentTarget.");
+             // Potentially close UI and end turn if target is required and missing
+            InputPanel.SetActive(false);
+            if (targetButtonsGroup != null) targetButtonsGroup.SetActive(false);
+            endTurn();
+            return;
+        }
+
+        Debug.Log(this.name + ": Reap_What_You_Sow initiated against " + currentTarget.name);
+
+        if (spriteBobber != null)
+        {
+            spriteBobber.SetBobbing(false); // Stop idle bob
+        }
+
+        if (animator != null)
+        {
+            // Ensure you have an Animator trigger named "DoReapWhatYouSow"
+            animator.SetTrigger("DoReapWhatYouSow"); 
+        }
+        else
+        {
+            Debug.LogError(this.name + " is missing Animator component! Performing action without animation.");
+            // Fallback: If no animator, perform the action directly
+            ExecuteReapWhatYouSowLogic(); 
+        }
+        // UI deactivation and endTurn() are now handled by OnReapWhatYouSowAnimationComplete or ExecuteReapWhatYouSowLogic
+    }
+
+    // This function will be called by an Animation Event
+    public void OnReapWhatYouSowAnimationComplete()
+    {
+        Debug.Log(this.name + ": OnReapWhatYouSowAnimationComplete event fired.");
+        if (spriteBobber != null)
+        {
+            spriteBobber.SetBobbing(true); // Re-enable bobbing
+        }
+        ExecuteReapWhatYouSowLogic();
+    }
+
+    private void ExecuteReapWhatYouSowLogic()
+    {
+        if (currentTarget == null) 
+        {
+             Debug.LogError(this.name + ": ExecuteReapWhatYouSowLogic - currentTarget is null.");
+             // Clean up UI and end turn even if target became null unexpectedly
+            InputPanel.SetActive(false);
+            if (targetButtonsGroup != null) targetButtonsGroup.SetActive(false);
+            endTurn();
+            return; // Important to prevent further errors
+        }
 
         Enemy target = currentTarget.GetComponent<Enemy>();
+        if (target == null)
+        {
+            Debug.LogError(this.name + ": ExecuteReapWhatYouSowLogic - currentTarget has no Enemy component.");
+            InputPanel.SetActive(false);
+            if (targetButtonsGroup != null) targetButtonsGroup.SetActive(false);
+            endTurn();
+            return; 
+        }
+
         int damage = UnityEngine.Random.Range(3, 5);
         int accuracyThreshold = 10;
         int bleedThreshold = 10;
+
         if (strength)
         {
             damage = (int)math.ceil(damage * 1.2);
@@ -190,26 +269,28 @@ public class Character : MonoBehaviour
         {
             accuracyThreshold = accuracyThreshold + 30;
         }
+
         if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
         {
-            Debug.Log(this.name + ": ATTACK: Reap What You Sow WENT THROUGH");
-            Debug.Log($"Updating health bar: {health} / {maxHealth}");
+            Debug.Log(this.name + ": ATTACK: Reap What You Sow HIT " + target.name);
+            // Debug.Log($"Updating health bar: {health} / {maxHealth}"); // Health bar is for this character, not target
             target.setHealth(target.health - damage);
-            Debug.Log("Enemy Health: " + target.health);
+            Debug.Log(target.name + " Health: " + target.health);
             if (UnityEngine.Random.Range(0, 100) >= bleedThreshold)
             {
-                Debug.Log("ENEMY BLEEDING");
+                Debug.Log(target.name + " is now BLEEDING");
                 target.setStatusEffect("Bleed_2", 3);
             }
             else
             {
-                Debug.Log("Missed Bleed Chance");
+                Debug.Log("Missed Bleed Chance on " + target.name);
             }
         }
         else
         {
-            Debug.Log("MISSED ATTACK");
+            Debug.Log(this.name + ": ATTACK: Reap What You Sow MISSED " + target.name);
         }
+
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
         {
