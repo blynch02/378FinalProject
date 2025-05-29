@@ -953,6 +953,7 @@ GameObject:
   - component: {fileID: 249606088}
   - component: {fileID: 249606087}
   - component: {fileID: 249606086}
+  - component: {fileID: 249606089}
   m_Layer: 5
   m_Name: Enemy 3
   m_TagString: Untagged
@@ -1074,6 +1075,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 249606084}
   m_CullTransparentMesh: 1
+--- !u!114 &249606089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 249606084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 791107906}
+  enemyRef: {fileID: 1471319019}
+  label: {fileID: 670206996}
 --- !u!1 &263674419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1796,6 +1812,7 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   currentTarget: {fileID: 0}
   targetButtonsGroup: {fileID: 1974602045}
+  targetButtons: []
   healthBarAnchor: {fileID: 1419197156}
   maxHealth: 23
 --- !u!1 &333520143
@@ -2333,6 +2350,7 @@ GameObject:
   - component: {fileID: 399000399}
   - component: {fileID: 399000398}
   - component: {fileID: 399000397}
+  - component: {fileID: 399000400}
   m_Layer: 5
   m_Name: Enemy 2
   m_TagString: Untagged
@@ -2454,6 +2472,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 399000395}
   m_CullTransparentMesh: 1
+--- !u!114 &399000400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 399000395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 635456142}
+  enemyRef: {fileID: 800883348}
+  label: {fileID: 1273450884}
 --- !u!1 &410386763
 GameObject:
   m_ObjectHideFlags: 0
@@ -2681,6 +2714,7 @@ GameObject:
   - component: {fileID: 464103088}
   - component: {fileID: 464103087}
   - component: {fileID: 464103086}
+  - component: {fileID: 464103089}
   m_Layer: 5
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -2802,6 +2836,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 464103084}
   m_CullTransparentMesh: 1
+--- !u!114 &464103089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 464103084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1682228756}
+  enemyRef: {fileID: 1780222506}
+  label: {fileID: 1852027191}
 --- !u!1 &486906826
 GameObject:
   m_ObjectHideFlags: 0
@@ -4132,6 +4181,7 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   currentTarget: {fileID: 0}
   targetButtonsGroup: {fileID: 761312583}
+  targetButtons: []
   healthBarAnchor: {fileID: 628790493}
   maxHealth: 28
 --- !u!212 &635456143
@@ -4501,6 +4551,7 @@ GameObject:
   - component: {fileID: 703494380}
   - component: {fileID: 703494379}
   - component: {fileID: 703494378}
+  - component: {fileID: 703494381}
   m_Layer: 5
   m_Name: Enemy 2
   m_TagString: Untagged
@@ -4622,6 +4673,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703494376}
   m_CullTransparentMesh: 1
+--- !u!114 &703494381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703494376}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 333357405}
+  enemyRef: {fileID: 800883348}
+  label: {fileID: 1529112389}
 --- !u!1 &730559880
 GameObject:
   m_ObjectHideFlags: 0
@@ -4951,6 +5017,7 @@ GameObject:
   - component: {fileID: 767853539}
   - component: {fileID: 767853538}
   - component: {fileID: 767853537}
+  - component: {fileID: 767853540}
   m_Layer: 5
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -5072,6 +5139,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 767853535}
   m_CullTransparentMesh: 1
+--- !u!114 &767853540
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 767853535}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 635456142}
+  enemyRef: {fileID: 1780222506}
+  label: {fileID: 1956276416}
 --- !u!1 &773929074
 GameObject:
   m_ObjectHideFlags: 0
@@ -5084,6 +5166,7 @@ GameObject:
   - component: {fileID: 773929078}
   - component: {fileID: 773929077}
   - component: {fileID: 773929076}
+  - component: {fileID: 773929079}
   m_Layer: 5
   m_Name: Enemy 4
   m_TagString: Untagged
@@ -5205,6 +5288,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773929074}
   m_CullTransparentMesh: 1
+--- !u!114 &773929079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773929074}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 791107906}
+  enemyRef: {fileID: 1598413507}
+  label: {fileID: 165244529}
 --- !u!1 &791107905
 GameObject:
   m_ObjectHideFlags: 0
@@ -5243,6 +5341,7 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   currentTarget: {fileID: 0}
   targetButtonsGroup: {fileID: 1558097060}
+  targetButtons: []
   healthBarAnchor: {fileID: 744622308}
   maxHealth: 18
 --- !u!212 &791107907
@@ -5347,18 +5446,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30471838ac30e204e9ab4695fbb97a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 37
+  health: 10
   isdead: 0
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   healthBarAnchor: {fileID: 1841550259}
   targetButtons:
-  - {fileID: 399000395}
-  - {fileID: 1800229178}
-  - {fileID: 1745999813}
   - {fileID: 703494376}
-  maxHealth: 37
+  - {fileID: 1745999813}
+  - {fileID: 1800229178}
+  - {fileID: 399000395}
+  maxHealth: 10
 --- !u!212 &800883350
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -5905,6 +6004,7 @@ GameObject:
   - component: {fileID: 921175087}
   - component: {fileID: 921175086}
   - component: {fileID: 921175085}
+  - component: {fileID: 921175088}
   m_Layer: 5
   m_Name: Enemy 4
   m_TagString: Untagged
@@ -6026,6 +6126,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 921175083}
   m_CullTransparentMesh: 1
+--- !u!114 &921175088
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 921175083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 333357405}
+  enemyRef: {fileID: 1598413507}
+  label: {fileID: 1083141720}
 --- !u!1 &959617805
 GameObject:
   m_ObjectHideFlags: 0
@@ -6767,6 +6882,7 @@ GameObject:
   - component: {fileID: 1108570756}
   - component: {fileID: 1108570755}
   - component: {fileID: 1108570754}
+  - component: {fileID: 1108570757}
   m_Layer: 5
   m_Name: Enemy 3
   m_TagString: Untagged
@@ -6888,6 +7004,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1108570752}
   m_CullTransparentMesh: 1
+--- !u!114 &1108570757
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1108570752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 635456142}
+  enemyRef: {fileID: 1471319019}
+  label: {fileID: 1785800710}
 --- !u!1 &1120495254
 GameObject:
   m_ObjectHideFlags: 0
@@ -7126,10 +7257,10 @@ RectTransform:
   - {fileID: 1682228758}
   - {fileID: 791107908}
   - {fileID: 635456144}
-  - {fileID: 1598413509}
-  - {fileID: 1471319022}
-  - {fileID: 800883351}
   - {fileID: 1780222509}
+  - {fileID: 800883351}
+  - {fileID: 1471319022}
+  - {fileID: 1598413509}
   - {fileID: 619394802}
   - {fileID: 282153018}
   - {fileID: 1748684143}
@@ -8216,6 +8347,7 @@ GameObject:
   - component: {fileID: 1343530356}
   - component: {fileID: 1343530355}
   - component: {fileID: 1343530354}
+  - component: {fileID: 1343530357}
   m_Layer: 5
   m_Name: Enemy 3
   m_TagString: Untagged
@@ -8337,6 +8469,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1343530352}
   m_CullTransparentMesh: 1
+--- !u!114 &1343530357
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1343530352}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1682228756}
+  enemyRef: {fileID: 1471319019}
+  label: {fileID: 2110744447}
 --- !u!1 &1400489995
 GameObject:
   m_ObjectHideFlags: 0
@@ -8349,6 +8496,7 @@ GameObject:
   - component: {fileID: 1400489999}
   - component: {fileID: 1400489998}
   - component: {fileID: 1400489997}
+  - component: {fileID: 1400490000}
   m_Layer: 5
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -8470,6 +8618,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400489995}
   m_CullTransparentMesh: 1
+--- !u!114 &1400490000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400489995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 791107906}
+  enemyRef: {fileID: 1780222506}
+  label: {fileID: 1491911263}
 --- !u!1 &1403178440
 GameObject:
   m_ObjectHideFlags: 0
@@ -8482,6 +8645,7 @@ GameObject:
   - component: {fileID: 1403178444}
   - component: {fileID: 1403178443}
   - component: {fileID: 1403178442}
+  - component: {fileID: 1403178445}
   m_Layer: 5
   m_Name: Enemy 3
   m_TagString: Untagged
@@ -8603,6 +8767,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1403178440}
   m_CullTransparentMesh: 1
+--- !u!114 &1403178445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1403178440}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 333357405}
+  enemyRef: {fileID: 1471319019}
+  label: {fileID: 501704139}
 --- !u!1 &1419197155
 GameObject:
   m_ObjectHideFlags: 0
@@ -8646,6 +8825,7 @@ GameObject:
   - component: {fileID: 1425080417}
   - component: {fileID: 1425080416}
   - component: {fileID: 1425080415}
+  - component: {fileID: 1425080418}
   m_Layer: 5
   m_Name: Enemy 4
   m_TagString: Untagged
@@ -8767,6 +8947,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425080413}
   m_CullTransparentMesh: 1
+--- !u!114 &1425080418
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1425080413}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 635456142}
+  enemyRef: {fileID: 1598413507}
+  label: {fileID: 1120495256}
 --- !u!1 &1425409821
 GameObject:
   m_ObjectHideFlags: 0
@@ -9173,18 +9368,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30471838ac30e204e9ab4695fbb97a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 26
+  health: 10
   isdead: 0
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   healthBarAnchor: {fileID: 304862441}
   targetButtons:
-  - {fileID: 1108570752}
-  - {fileID: 249606084}
-  - {fileID: 1343530352}
   - {fileID: 1403178440}
-  maxHealth: 26
+  - {fileID: 1343530352}
+  - {fileID: 249606084}
+  - {fileID: 1108570752}
+  maxHealth: 10
 --- !u!212 &1471319021
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -9268,6 +9463,7 @@ GameObject:
   - component: {fileID: 1480463930}
   - component: {fileID: 1480463929}
   - component: {fileID: 1480463928}
+  - component: {fileID: 1480463931}
   m_Layer: 5
   m_Name: Enemy 1
   m_TagString: Untagged
@@ -9389,6 +9585,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1480463926}
   m_CullTransparentMesh: 1
+--- !u!114 &1480463931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1480463926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 333357405}
+  enemyRef: {fileID: 1780222506}
+  label: {fileID: 1845535323}
 --- !u!1 &1491911261
 GameObject:
   m_ObjectHideFlags: 0
@@ -10359,7 +10570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30471838ac30e204e9ab4695fbb97a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 32
+  health: 10
   isdead: 0
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
@@ -10370,7 +10581,7 @@ MonoBehaviour:
   - {fileID: 1626067707}
   - {fileID: 773929074}
   - {fileID: 1425080413}
-  maxHealth: 32
+  maxHealth: 10
 --- !u!1 &1609454367
 GameObject:
   m_ObjectHideFlags: 0
@@ -10418,6 +10629,7 @@ GameObject:
   - component: {fileID: 1626067711}
   - component: {fileID: 1626067710}
   - component: {fileID: 1626067709}
+  - component: {fileID: 1626067712}
   m_Layer: 5
   m_Name: Enemy 4
   m_TagString: Untagged
@@ -10539,6 +10751,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1626067707}
   m_CullTransparentMesh: 1
+--- !u!114 &1626067712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1626067707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1682228756}
+  enemyRef: {fileID: 1598413507}
+  label: {fileID: 1588268379}
 --- !u!1 &1682228755
 GameObject:
   m_ObjectHideFlags: 0
@@ -10577,6 +10804,7 @@ MonoBehaviour:
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   currentTarget: {fileID: 0}
   targetButtonsGroup: {fileID: 1609454367}
+  targetButtons: []
   healthBarAnchor: {fileID: 862501508}
   maxHealth: 40
 --- !u!212 &1682228757
@@ -10694,6 +10922,7 @@ GameObject:
   - component: {fileID: 1745999817}
   - component: {fileID: 1745999816}
   - component: {fileID: 1745999815}
+  - component: {fileID: 1745999818}
   m_Layer: 5
   m_Name: Enemy 2
   m_TagString: Untagged
@@ -10815,6 +11044,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1745999813}
   m_CullTransparentMesh: 1
+--- !u!114 &1745999818
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1745999813}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 1682228756}
+  enemyRef: {fileID: 800883348}
+  label: {fileID: 1456712688}
 --- !u!1 &1748324730
 GameObject:
   m_ObjectHideFlags: 0
@@ -11337,18 +11581,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30471838ac30e204e9ab4695fbb97a15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 19
+  health: 10
   isdead: 0
   playerChar1: {fileID: 333357402}
   battleSystem: {fileID: 836564126}
   healthBarPrefab: {fileID: 3951819064611966567, guid: aaec77bf5e76ae840a9ea76174747b1c, type: 3}
   healthBarAnchor: {fileID: 748927710}
   targetButtons:
-  - {fileID: 767853535}
-  - {fileID: 1400489995}
-  - {fileID: 464103084}
   - {fileID: 1480463926}
-  maxHealth: 19
+  - {fileID: 464103084}
+  - {fileID: 1400489995}
+  - {fileID: 767853535}
+  maxHealth: 10
 --- !u!212 &1780222508
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -11812,6 +12056,7 @@ GameObject:
   - component: {fileID: 1800229182}
   - component: {fileID: 1800229181}
   - component: {fileID: 1800229180}
+  - component: {fileID: 1800229183}
   m_Layer: 5
   m_Name: Enemy 2
   m_TagString: Untagged
@@ -11933,6 +12178,21 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1800229178}
   m_CullTransparentMesh: 1
+--- !u!114 &1800229183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1800229178}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3ecaaceed901fd249a2440b853dd38df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  owner: {fileID: 791107906}
+  enemyRef: {fileID: 800883348}
+  label: {fileID: 1275597411}
 --- !u!1 &1815581509
 GameObject:
   m_ObjectHideFlags: 0
@@ -12231,7 +12491,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 635456142}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: Zephyrs_Call
+        m_MethodName: Dragons_Breath
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
