@@ -120,7 +120,7 @@ public class Enemy : MonoBehaviour
         Character target = null;
         while (target == null || target.isdead)
         {
-            target = bs.party[UnityEngine.Random.Range(0, 3)].GetComponent<Character>();
+            target = bs.party[UnityEngine.Random.Range(0, 4)].GetComponent<Character>();
         }
         int damage = UnityEngine.Random.Range(4, 9);
         int accuracyThreshold = 10;
@@ -170,7 +170,7 @@ public class Enemy : MonoBehaviour
         Character target = null;
         while (target == null || target.isdead)
         {
-            target = bs.party[UnityEngine.Random.Range(0, 3)].GetComponent<Character>();
+            target = bs.party[UnityEngine.Random.Range(0, 4)].GetComponent<Character>();
         }
         int damage = UnityEngine.Random.Range(8, 14);
         int accuracyThreshold = 10;
@@ -220,7 +220,7 @@ public class Enemy : MonoBehaviour
         Character target = null;
         while (target == null || target.isdead)
         {
-            target = bs.party[UnityEngine.Random.Range(0, 3)].GetComponent<Character>();
+            target = bs.party[UnityEngine.Random.Range(0, 4)].GetComponent<Character>();
         }
         int damage = UnityEngine.Random.Range(2, 5);
         int accuracyThreshold = 10;
