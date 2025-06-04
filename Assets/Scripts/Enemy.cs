@@ -30,6 +30,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private Transform healthBarAnchor;
     [SerializeField] private GameObject[] targetButtons;
 
+    [SerializeField] private Transform damagePopup;
     private List<Action> attacks;
 
     private HealthBar healthBar;
@@ -59,8 +60,26 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void showStatusEffect(string message)
+    {
+        Vector3 randomOffset = new Vector3(
+        UnityEngine.Random.Range(-100, 100),
+        UnityEngine.Random.Range(90, 125),
+        0);
+        Transform damagePopupTransform = Instantiate(damagePopup, this.transform.position + randomOffset, Quaternion.identity);
+        DamageNumbers dmgnums = damagePopupTransform.GetComponent<DamageNumbers>();
+        dmgnums.setUpStatusEffect(message);
+    }
+
     public void setHealth(int val)
     {
+        Vector3 randomOffset = new Vector3(
+        UnityEngine.Random.Range(-100, 100),
+        UnityEngine.Random.Range(90, 125),
+        0);
+        Transform damagePopupTransform = Instantiate(damagePopup, this.transform.position + randomOffset, Quaternion.identity);
+        DamageNumbers dmgnums = damagePopupTransform.GetComponent<DamageNumbers>();
+        dmgnums.setUp(health - val);
         this.health = Mathf.Clamp(val, 0, maxHealth);
 
         if (healthBar != null)
@@ -96,11 +115,16 @@ public class Enemy : MonoBehaviour
         if (isdead)
         {
             endTurn();
+            yield break;
         }
         else
         {
             handleStatusEffects();
-
+            if (isdead)
+            {
+                endTurn();
+                yield break;
+            }
             if (!stunned)
             {
                 yield return new WaitForSeconds(2f);
@@ -110,6 +134,7 @@ public class Enemy : MonoBehaviour
             else
             {
                 endTurn();
+                yield break;
             }
         }
     }

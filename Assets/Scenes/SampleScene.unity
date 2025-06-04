@@ -1816,6 +1816,7 @@ MonoBehaviour:
   targetButtonsGroup: {fileID: 1974602045}
   targetButtons: []
   healthBarAnchor: {fileID: 1419197156}
+  damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
   maxHealth: 25
 --- !u!95 &333357406
 Animator:
@@ -4235,6 +4236,7 @@ MonoBehaviour:
   targetButtonsGroup: {fileID: 761312583}
   targetButtons: []
   healthBarAnchor: {fileID: 628790493}
+  damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
   maxHealth: 28
 --- !u!212 &635456143
 SpriteRenderer:
@@ -5433,6 +5435,7 @@ MonoBehaviour:
   targetButtonsGroup: {fileID: 1558097060}
   targetButtons: []
   healthBarAnchor: {fileID: 744622308}
+  damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
   maxHealth: 20
 --- !u!212 &791107907
 SpriteRenderer:
@@ -5585,6 +5588,7 @@ MonoBehaviour:
   - {fileID: 1745999813}
   - {fileID: 1800229178}
   - {fileID: 399000395}
+  damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
   maxHealth: 28
 --- !u!212 &800883350
 SpriteRenderer:
@@ -9435,6 +9439,7 @@ MonoBehaviour:
   - {fileID: 1343530352}
   - {fileID: 249606084}
   - {fileID: 1108570752}
+  damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
   maxHealth: 38
 --- !u!212 &1471319021
 SpriteRenderer:
@@ -10675,6 +10680,7 @@ MonoBehaviour:
   - {fileID: 1626067707}
   - {fileID: 773929074}
   - {fileID: 1425080413}
+  damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
   maxHealth: 40
 --- !u!95 &1598413511
 Animator:
@@ -10938,6 +10944,7 @@ MonoBehaviour:
   targetButtonsGroup: {fileID: 1609454367}
   targetButtons: []
   healthBarAnchor: {fileID: 862501508}
+  damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
   maxHealth: 40
 --- !u!212 &1682228757
 SpriteRenderer:
@@ -11762,6 +11769,7 @@ MonoBehaviour:
   - {fileID: 464103084}
   - {fileID: 1400489995}
   - {fileID: 767853535}
+  damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
   maxHealth: 32
 --- !u!212 &1780222508
 SpriteRenderer:
@@ -13788,12 +13796,10 @@ MonoBehaviour:
 
 
 
-    1-5 damage
+    70% chance to Burn for 4 pts/turn for 2 turns
 
-    70% chance to Burn for 4 pts/turn
-    for 2 turns
-
-    Hits all enemies
+    Hits
+    all enemies
 
 '
   m_isRightToLeft: 0

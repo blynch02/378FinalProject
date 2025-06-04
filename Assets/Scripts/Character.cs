@@ -28,6 +28,8 @@ public class Character : MonoBehaviour
 
     [SerializeField] private Transform healthBarAnchor;
 
+    [SerializeField] private Transform damagePopup;
+
     public int maxHealth = 10;
 
 
@@ -85,9 +87,15 @@ public class Character : MonoBehaviour
         if (isdead)
         {
             endTurn();
+            return;
         }
         Debug.Log("It is " + this.name + "'s turn");
         handleStatusEffects();
+        if (isdead)
+        {
+            endTurn();
+            return;
+        }
         if (!stunned)
         {
             InputPanel.SetActive(true);
@@ -99,6 +107,7 @@ public class Character : MonoBehaviour
         {
             Debug.Log("You are stunned, skipping turn...");
             endTurn();
+            return;
         }
     }
 
@@ -392,7 +401,7 @@ public class Character : MonoBehaviour
             {
                 int healVal = UnityEngine.Random.Range(1, 5);
                 Debug.Log("Healed: " + partymember.name + "For " + healVal);
-                member.setHealth(member.health += healVal);
+                member.setHealth(member.health + healVal);
             }
         }
         InputPanel.SetActive(false);
@@ -498,13 +507,15 @@ public class Character : MonoBehaviour
 
     public void Dragons_Breath()
     {
+        int accuracyThreshold = 30;
         foreach (GameObject enemy in battleSystem.GetComponent<BattleSystem>().enemies)
         {
-            int damage = UnityEngine.Random.Range(1, 6);
-            Debug.Log("Burned: " + enemy.name + "For " + damage);
-            Enemy member = enemy.GetComponent<Enemy>();
-            member.setHealth(member.health -= damage);
-            member.setStatusEffect("Burn_4", 2);
+            if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
+            {
+                Enemy member = enemy.GetComponent<Enemy>();
+                member.showStatusEffect("Burned!");
+                member.setStatusEffect("Burn_4", 2);
+            }
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
@@ -567,6 +578,13 @@ public class Character : MonoBehaviour
 
     public void setHealth(int val)
     {
+        Vector3 randomOffset = new Vector3(
+        UnityEngine.Random.Range(-100, 100),
+        UnityEngine.Random.Range(90, 125),  
+        0);
+        Transform damagePopupTransform = Instantiate(damagePopup, this.transform.position + randomOffset, Quaternion.identity);
+        DamageNumbers dmgnums = damagePopupTransform.GetComponent<DamageNumbers>();
+        dmgnums.setUp(health - val);
         health = Mathf.Clamp(val, 0, maxHealth);
         Debug.Log($"Updating health bar: {health} / {maxHealth}");
 
