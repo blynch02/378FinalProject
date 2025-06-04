@@ -66,6 +66,7 @@ public class Character : MonoBehaviour
         effect_dur.Add("Strength_20", 0);
         effect_dur.Add("Weakness_20", 0);
         effect_dur.Add("Terrified_30", 0);
+        effect_dur.Add("Poison_1", 0);
 
         // Initialize Animator and SimpleSpriteBob components
         animator = GetComponent<Animator>();
@@ -121,6 +122,13 @@ public class Character : MonoBehaviour
         else
         {
             stunned = false;
+        }
+        
+        if (effect_dur.ContainsKey("Bleed_1") && effect_dur["Poison_1"] > 0)
+        {
+            setHealth(health - 1);
+            effect_dur["Poison_1"] -= 1;
+            Debug.Log("Took 1pt of poison damage! " + effect_dur["Poison_1"] + " turns remaining.");
         }
 
         if (effect_dur.ContainsKey("Bleed_1") && effect_dur["Bleed_1"] > 0)
@@ -193,15 +201,7 @@ public class Character : MonoBehaviour
     }
     public void Reap_What_You_Sow()
     {
-        if (currentTarget == null)
-        {
-            Debug.LogWarning(this.name + ": Reap_What_You_Sow called with no currentTarget.");
-             // Potentially close UI and end turn if target is required and missing
-            InputPanel.SetActive(false);
-            if (targetButtonsGroup != null) targetButtonsGroup.SetActive(false);
-            endTurn();
-            return;
-        }
+        if (currentTarget == null) return;
 
         Debug.Log(this.name + ": Reap_What_You_Sow initiated against " + currentTarget.name);
 
@@ -238,25 +238,9 @@ public class Character : MonoBehaviour
 
     private void ExecuteReapWhatYouSowLogic()
     {
-        if (currentTarget == null) 
-        {
-             Debug.LogError(this.name + ": ExecuteReapWhatYouSowLogic - currentTarget is null.");
-             // Clean up UI and end turn even if target became null unexpectedly
-            InputPanel.SetActive(false);
-            if (targetButtonsGroup != null) targetButtonsGroup.SetActive(false);
-            endTurn();
-            return; // Important to prevent further errors
-        }
+        if (currentTarget == null) return;
 
         Enemy target = currentTarget.GetComponent<Enemy>();
-        if (target == null)
-        {
-            Debug.LogError(this.name + ": ExecuteReapWhatYouSowLogic - currentTarget has no Enemy component.");
-            InputPanel.SetActive(false);
-            if (targetButtonsGroup != null) targetButtonsGroup.SetActive(false);
-            endTurn();
-            return; 
-        }
 
         int damage = UnityEngine.Random.Range(3, 6);
         int accuracyThreshold = 10;
@@ -284,6 +268,7 @@ public class Character : MonoBehaviour
             if (UnityEngine.Random.Range(0, 101) >= bleedThreshold)
             {
                 Debug.Log(target.name + " is now BLEEDING");
+                target.showStatusEffect("Bleeding!");
                 target.setStatusEffect("Bleed_2", 3);
             }
             else
@@ -309,7 +294,9 @@ public class Character : MonoBehaviour
         foreach (GameObject partymember in battleSystem.GetComponent<BattleSystem>().party)
         {
             Debug.Log("Buffed: " + partymember.name);
-            partymember.GetComponent<Character>().setStatusEffect("Strength_20", 3);
+            Character member = partymember.GetComponent<Character>();
+            member.showStatusEffect("Strength!");
+            member.setStatusEffect("Strength_20", 3);
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
@@ -442,6 +429,7 @@ public class Character : MonoBehaviour
             Debug.Log("Enemy Health: " + target.health);
             if (UnityEngine.Random.Range(0, 101) >= stunThreshold)
             {
+                target.showStatusEffect("Stunned!");
                 target.setStatusEffect("Stun", 1);
             }
         }
@@ -490,6 +478,7 @@ public class Character : MonoBehaviour
             Debug.Log("Enemy Health: " + target.health);
             if (UnityEngine.Random.Range(0, 101) >= stunThreshold)
             {
+                target.showStatusEffect("Stunned!");
                 target.setStatusEffect("Stun", 1);
             }
         }
@@ -538,6 +527,7 @@ public class Character : MonoBehaviour
         Debug.Log("Enemy Health: " + target.health);
         if (UnityEngine.Random.Range(0, 101) >= stunThreshold)
         {
+            showStatusEffect("Stunned");
             setStatusEffect("Stun", 1);
         }
         InputPanel.SetActive(false);
@@ -551,6 +541,7 @@ public class Character : MonoBehaviour
     public void Aura_Of_Protection()
     {
         Character target = battleSystem.GetComponent<BattleSystem>().party[0].GetComponent<Character>();
+        target.showStatusEffect("Protected!");
         target.setStatusEffect("Protection_50", 2);
         Debug.Log("Protected " + target.name);
         InputPanel.SetActive(false);
@@ -565,6 +556,7 @@ public class Character : MonoBehaviour
     {
         if (currentTarget == null) return;
         Enemy target = currentTarget.GetComponent<Enemy>();
+        target.showStatusEffect("Weakened!");
         target.setStatusEffect("Weakness_20", 1);
         Debug.Log("Cursed " + target.name);
         InputPanel.SetActive(false);
@@ -576,11 +568,113 @@ public class Character : MonoBehaviour
 
     }
 
+    public void Spill_Their_Blood()
+    {
+        if (currentTarget == null) return;
+
+        Enemy target = currentTarget.GetComponent<Enemy>();
+        int damage = UnityEngine.Random.Range(1, 3);
+        int accuracyThreshold = 10;
+        int bleedThreshold = 0;
+
+        if (strength)
+        {
+            damage = (int)math.ceil(damage * 1.2);
+        }
+        if (weakness)
+        {
+            damage = (int)math.ceil(damage * .8);
+        }
+        if (terrified)
+        {
+            accuracyThreshold = accuracyThreshold + 30;
+        }
+        if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
+        {
+            target.setHealth(target.health - damage);
+            if (UnityEngine.Random.Range(0, 101) >= bleedThreshold)
+            {
+                Debug.Log(target.name + " is now BLEEDING");
+                target.showStatusEffect("Bleeding!");
+                target.setStatusEffect("Bleed_1", 2);
+            }
+        }
+        else
+        {
+            showStatusEffect("Missed!");
+        }
+
+        InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+        {
+            targetButtonsGroup.SetActive(false);
+        }
+        endTurn();
+    }
+
+    public void Shadows_Call()
+    {
+        int accuracyThreshold = 25;
+        foreach (GameObject enemy in battleSystem.GetComponent<BattleSystem>().enemies)
+        {
+            if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
+            {
+                Enemy member = enemy.GetComponent<Enemy>();
+                member.showStatusEffect("Terrified!");
+                member.setStatusEffect("Terrified_30", 1);
+            }
+            else
+            {
+                showStatusEffect("Missed!");
+            }
+        }
+        InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+        {
+            targetButtonsGroup.SetActive(false);
+        }
+        endTurn();
+    }
+
+    public void Herbal_Remedy()
+    {
+        int success_threshold = 30;
+        if (UnityEngine.Random.Range(0, 101) >= success_threshold)
+        {
+            int healval = UnityEngine.Random.Range(3, 6);
+            setHealth(health + healval);
+            Cure();
+            showStatusEffect("Cured!");
+        }
+        else
+        {
+            setStatusEffect("Poison_1", 4);
+            showStatusEffect("Poisoned!");
+        }
+        InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+        {
+            targetButtonsGroup.SetActive(false);
+        }
+        endTurn();
+    }
+
+    public void Cure()
+    {
+        effect_dur["Bleed_1"] = 0;
+        effect_dur["Bleed_2"] = 0;
+        effect_dur["Bleed_4"] = 0;
+        effect_dur["Burn_4"] = 0;
+        effect_dur["Weakness_20"] = 0;
+        effect_dur["Terrified_30"] = 0;
+        return;
+    }
+
     public void setHealth(int val)
     {
         Vector3 randomOffset = new Vector3(
         UnityEngine.Random.Range(-100, 100),
-        UnityEngine.Random.Range(90, 125),  
+        UnityEngine.Random.Range(90, 125),
         0);
         Transform damagePopupTransform = Instantiate(damagePopup, this.transform.position + randomOffset, Quaternion.identity);
         DamageNumbers dmgnums = damagePopupTransform.GetComponent<DamageNumbers>();
@@ -598,6 +692,17 @@ public class Character : MonoBehaviour
             Destroy(gameObject.GetComponent<SpriteRenderer>());
             battleSystem.GetComponent<BattleSystem>().checkParty();
         }
+    }
+
+    public void showStatusEffect(string message)
+    {
+        Vector3 randomOffset = new Vector3(
+        UnityEngine.Random.Range(-100, 100),
+        UnityEngine.Random.Range(90, 125),
+        0);
+        Transform damagePopupTransform = Instantiate(damagePopup, this.transform.position + randomOffset, Quaternion.identity);
+        DamageNumbers dmgnums = damagePopupTransform.GetComponent<DamageNumbers>();
+        dmgnums.setUpStatusEffect(message);
     }
 
     public void setStatusEffect(string effect, int dur)

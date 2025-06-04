@@ -166,7 +166,7 @@ public class Enemy : MonoBehaviour
         {
             damage = (int)math.ceil(damage * .5);
         }
-        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
         {
             Debug.Log(this.name + ": ATTACK: Lumbering Strike WENT THROUGH");
             Debug.Log($"Updating health bar: {health} / {maxHealth}");
@@ -216,7 +216,7 @@ public class Enemy : MonoBehaviour
         {
             damage = (int)math.ceil(damage * .5);
         }
-        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
         {
             Debug.Log(this.name + ": ATTACK: Reckless Charge WENT THROUGH");
             Debug.Log($"Updating health bar: {health} / {maxHealth}");
@@ -266,7 +266,7 @@ public class Enemy : MonoBehaviour
         {
             damage = (int)math.ceil(damage * .5);
         }
-        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
         {
             Debug.Log(this.name + ": ATTACK: Lacerate WENT THROUGH");
             Debug.Log($"Updating health bar: {health} / {maxHealth}");

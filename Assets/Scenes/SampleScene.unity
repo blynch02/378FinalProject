@@ -10990,7 +10990,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 4810702507026764722, guid: e529c81cac785417bbebee279fdfe941, type: 3}
+  m_Sprite: {fileID: 4113829005332862926, guid: 766093353695e444f87194deccaa4121, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -13466,7 +13466,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 635456142}
         m_TargetAssemblyTypeName: Character, Assembly-CSharp
-        m_MethodName: Sanctimonious_Smite
+        m_MethodName: Spill_Their_Blood
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -13571,9 +13571,15 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Attack 2
+  m_text: 'spill their blood
 
-'
+
+    1-2 damage
+
+    90% hit chance
+
+    100% bleed
+    chance for 1pt/turn for 2 turns'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5a1227303079a054ea74a149e3811c45, type: 2}
   m_sharedMaterial: {fileID: -5381270357000351110, guid: 5a1227303079a054ea74a149e3811c45, type: 2}
