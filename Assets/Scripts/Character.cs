@@ -249,7 +249,7 @@ public class Character : MonoBehaviour
             return; 
         }
 
-        int damage = UnityEngine.Random.Range(3, 5);
+        int damage = UnityEngine.Random.Range(3, 6);
         int accuracyThreshold = 10;
         int bleedThreshold = 10;
 
@@ -266,13 +266,13 @@ public class Character : MonoBehaviour
             accuracyThreshold = accuracyThreshold + 30;
         }
 
-        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
         {
             Debug.Log(this.name + ": ATTACK: Reap What You Sow HIT " + target.name);
             // Debug.Log($"Updating health bar: {health} / {maxHealth}"); // Health bar is for this character, not target
             target.setHealth(target.health - damage);
             Debug.Log(target.name + " Health: " + target.health);
-            if (UnityEngine.Random.Range(0, 100) >= bleedThreshold)
+            if (UnityEngine.Random.Range(0, 101) >= bleedThreshold)
             {
                 Debug.Log(target.name + " is now BLEEDING");
                 target.setStatusEffect("Bleed_2", 3);
@@ -318,9 +318,9 @@ public class Character : MonoBehaviour
         {
             accuracyThreshold = accuracyThreshold + 30;
         }
-        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
         {
-            setHealth(health - UnityEngine.Random.Range(1, 4));
+            setHealth(health - UnityEngine.Random.Range(1, 5));
         }
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
@@ -335,7 +335,7 @@ public class Character : MonoBehaviour
         if (currentTarget == null) return;
 
         Enemy target = currentTarget.GetComponent<Enemy>();
-        int damage = UnityEngine.Random.Range(1, 15);
+        int damage = UnityEngine.Random.Range(1, 16);
         int accuracyThreshold = 5;
 
         if (strength)
@@ -350,7 +350,7 @@ public class Character : MonoBehaviour
         {
             accuracyThreshold = accuracyThreshold + 30;
         }
-        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
         {
             Debug.Log(this.name + ": ATTACK: Ace In The Sleeve WENT THROUGH");
             Debug.Log($"Updating health bar: {health} / {maxHealth}");
@@ -372,7 +372,7 @@ public class Character : MonoBehaviour
     public void Divine_Intervention()
     {
         Character target = battleSystem.GetComponent<BattleSystem>().party[0].GetComponent<Character>();
-        int healVal = UnityEngine.Random.Range(4, 8);
+        int healVal = UnityEngine.Random.Range(4, 9);
         target.setHealth(target.health + healVal);
         Debug.Log("Healed " + target.name + "for " + healVal);
         InputPanel.SetActive(false);
@@ -390,7 +390,7 @@ public class Character : MonoBehaviour
             Character member = partymember.GetComponent<Character>();
             if (!member.isdead)
             {
-                int healVal = UnityEngine.Random.Range(1, 4);
+                int healVal = UnityEngine.Random.Range(1, 5);
                 Debug.Log("Healed: " + partymember.name + "For " + healVal);
                 member.setHealth(member.health += healVal);
             }
@@ -406,10 +406,10 @@ public class Character : MonoBehaviour
     public void Sanctimonious_Smite()
     {
         if (currentTarget == null) return;
-        int healVal = UnityEngine.Random.Range(1, 2);
+        int healVal = UnityEngine.Random.Range(1, 3);
         Enemy target = currentTarget.GetComponent<Enemy>();
 
-        int damage = UnityEngine.Random.Range(5, 8);
+        int damage = UnityEngine.Random.Range(5, 9);
         int accuracyThreshold = 10;
         int stunThreshold = 80;
         if (strength)
@@ -424,14 +424,14 @@ public class Character : MonoBehaviour
         {
             accuracyThreshold = accuracyThreshold + 30;
         }
-        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
         {
             Debug.Log(this.name + ": ATTACK: Sanctimonious Smite WENT THROUGH");
             Debug.Log($"Updating health bar: {health} / {maxHealth}");
             target.setHealth(target.health - damage);
             setHealth(health + healVal);
             Debug.Log("Enemy Health: " + target.health);
-            if (UnityEngine.Random.Range(0, 100) >= stunThreshold)
+            if (UnityEngine.Random.Range(0, 101) >= stunThreshold)
             {
                 target.setStatusEffect("Stun", 1);
             }
@@ -453,7 +453,7 @@ public class Character : MonoBehaviour
         if (currentTarget == null) return;
         Enemy target = currentTarget.GetComponent<Enemy>();
 
-        int damage = UnityEngine.Random.Range(5, 8);
+        int damage = UnityEngine.Random.Range(5, 9);
         int accuracyThreshold = 10;
         int stunThreshold = 30;
         if (strength)
@@ -473,13 +473,13 @@ public class Character : MonoBehaviour
             damage = (int)math.ceil(damage * 1.5);
         }
 
-        if (UnityEngine.Random.Range(0, 100) >= accuracyThreshold)
+        if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
         {
             Debug.Log(this.name + ": ATTACK: Holy Rebuke WENT THROUGH");
             Debug.Log($"Updating health bar: {health} / {maxHealth}");
             target.setHealth(target.health - damage);
             Debug.Log("Enemy Health: " + target.health);
-            if (UnityEngine.Random.Range(0, 100) >= stunThreshold)
+            if (UnityEngine.Random.Range(0, 101) >= stunThreshold)
             {
                 target.setStatusEffect("Stun", 1);
             }
@@ -500,7 +500,7 @@ public class Character : MonoBehaviour
     {
         foreach (GameObject enemy in battleSystem.GetComponent<BattleSystem>().enemies)
         {
-            int damage = UnityEngine.Random.Range(1, 5);
+            int damage = UnityEngine.Random.Range(1, 6);
             Debug.Log("Burned: " + enemy.name + "For " + damage);
             Enemy member = enemy.GetComponent<Enemy>();
             member.setHealth(member.health -= damage);
@@ -518,14 +518,14 @@ public class Character : MonoBehaviour
     {
         if (currentTarget == null) return;
         Enemy target = currentTarget.GetComponent<Enemy>();
-        int damage = UnityEngine.Random.Range(8, 15);
+        int damage = UnityEngine.Random.Range(8, 16);
         int stunThreshold = 50;
 
         Debug.Log(this.name + ": ATTACK: Zephyrs Call WENT THROUGH");
         Debug.Log($"Updating health bar: {health} / {maxHealth}");
         target.setHealth(target.health - damage);
         Debug.Log("Enemy Health: " + target.health);
-        if (UnityEngine.Random.Range(0, 100) >= stunThreshold)
+        if (UnityEngine.Random.Range(0, 101) >= stunThreshold)
         {
             setStatusEffect("Stun", 1);
         }
