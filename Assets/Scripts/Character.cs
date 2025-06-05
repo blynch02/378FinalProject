@@ -202,9 +202,15 @@ public class Character : MonoBehaviour
     public void Reap_What_You_Sow()
     {
         if (currentTarget == null) return;
+        StartCoroutine(ExecuteAttackWithAnimation("Reaping", ExecuteReapWhatYouSowLogic));
+    }
 
-        Debug.Log(this.name + ": Reap_What_You_Sow initiated against " + currentTarget.name);
+    // Generic coroutine for handling attack animations
+    private System.Collections.IEnumerator ExecuteAttackWithAnimation(string animationTrigger, System.Action attackLogic)
+    {
+        Debug.Log(this.name + ": Starting attack with animation: " + animationTrigger);
 
+        // Stop bobbing and start animation
         if (spriteBobber != null)
         {
             spriteBobber.SetBobbing(false);
@@ -212,27 +218,22 @@ public class Character : MonoBehaviour
 
         if (animator != null)
         {
- 
-            animator.SetBool("Reaping", true); 
+            animator.SetBool(animationTrigger, true);
+            
+            // Wait for animation to finish (you can adjust this timing or use animation length)
+            yield return new WaitForSeconds(1.0f); // Adjust timing as needed
+            
+            animator.SetBool(animationTrigger, false);
         }
-        else
-        {
-            Debug.LogError(this.name + " is missing Animator component! Performing action without animation.");
 
-            ExecuteReapWhatYouSowLogic(); 
-        }
-       
-    }
+        // Execute the actual attack logic
+        attackLogic?.Invoke();
 
-    public void OnReapWhatYouSowAnimationComplete()
-    {
-        Debug.Log(this.name + ": OnReapWhatYouSowAnimationComplete event fired.");
+        // Resume bobbing
         if (spriteBobber != null)
         {
-            spriteBobber.SetBobbing(true); 
+            spriteBobber.SetBobbing(true);
         }
-        animator.SetBool("Reaping", false);
-        ExecuteReapWhatYouSowLogic();
     }
 
     private void ExecuteReapWhatYouSowLogic()
@@ -402,6 +403,16 @@ public class Character : MonoBehaviour
     public void Sanctimonious_Smite()
     {
         if (currentTarget == null) return;
+        
+        // Option A: Execute immediately (current behavior)
+        ExecuteSanctioniousSmiteLogic();
+        
+        // Option B: Execute with animation (just change the above line to this):
+        // StartCoroutine(ExecuteAttackWithAnimation("Smiting", ExecuteSanctioniousSmiteLogic));
+    }
+
+    private void ExecuteSanctioniousSmiteLogic()
+    {
         int healVal = UnityEngine.Random.Range(1, 3);
         Enemy target = currentTarget.GetComponent<Enemy>();
 
