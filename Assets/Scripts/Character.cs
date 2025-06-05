@@ -261,7 +261,6 @@ public class Character : MonoBehaviour
         if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
         {
             Debug.Log(this.name + ": ATTACK: Reap What You Sow HIT " + target.name);
-            // Debug.Log($"Updating health bar: {health} / {maxHealth}"); // Health bar is for this character, not target
             target.setHealth(target.health - damage);
             Debug.Log(target.name + " Health: " + target.health);
             if (UnityEngine.Random.Range(0, 101) >= bleedThreshold)
