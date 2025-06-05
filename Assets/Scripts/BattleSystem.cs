@@ -15,6 +15,7 @@ public enum BattleState
 public class BattleSystem : MonoBehaviour
 {
     [SerializeField] private GameObject LosePanel;
+    [SerializeField] private GameObject WinPanel;
     [SerializeField] private GameObject playerChar1;
     [SerializeField] private GameObject playerChar2;
     [SerializeField] private GameObject playerChar3;
@@ -86,6 +87,8 @@ public class BattleSystem : MonoBehaviour
 
     void winGame()
     {
+        bool isActive = WinPanel.activeSelf;
+        WinPanel.SetActive(!isActive);
         Debug.Log("You Win!");
     }
 
