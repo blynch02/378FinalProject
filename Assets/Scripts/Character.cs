@@ -278,6 +278,7 @@ public class Character : MonoBehaviour
         }
         else
         {
+            target.showStatusEffect("Missed");
             Debug.Log(this.name + ": ATTACK: Reap What You Sow MISSED " + target.name);
         }
 
@@ -355,6 +356,7 @@ public class Character : MonoBehaviour
         }
         else
         {
+            target.showStatusEffect("Missed");
             Debug.Log("MISSED ATTACK");
         }
         InputPanel.SetActive(false);
@@ -435,6 +437,7 @@ public class Character : MonoBehaviour
         }
         else
         {
+            target.showStatusEffect("Missed");
             Debug.Log("MISSED ATTACK");
         }
         InputPanel.SetActive(false);
@@ -484,6 +487,7 @@ public class Character : MonoBehaviour
         }
         else
         {
+            target.showStatusEffect("Missed!");
             Debug.Log("MISSED ATTACK");
         }
         InputPanel.SetActive(false);
@@ -601,7 +605,7 @@ public class Character : MonoBehaviour
         }
         else
         {
-            showStatusEffect("Missed!");
+            target.showStatusEffect("Missed!");
         }
 
         InputPanel.SetActive(false);
@@ -617,15 +621,15 @@ public class Character : MonoBehaviour
         int accuracyThreshold = 25;
         foreach (GameObject enemy in battleSystem.GetComponent<BattleSystem>().enemies)
         {
+            Enemy member = enemy.GetComponent<Enemy>();
             if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
             {
-                Enemy member = enemy.GetComponent<Enemy>();
                 member.showStatusEffect("Terrified!");
                 member.setStatusEffect("Terrified_30", 1);
             }
             else
             {
-                showStatusEffect("Missed!");
+                member.showStatusEffect("Missed!");
             }
         }
         InputPanel.SetActive(false);
