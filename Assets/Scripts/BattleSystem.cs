@@ -14,6 +14,7 @@ public enum BattleState
 }
 public class BattleSystem : MonoBehaviour
 {
+    [SerializeField] private GameObject LosePanel;
     [SerializeField] private GameObject playerChar1;
     [SerializeField] private GameObject playerChar2;
     [SerializeField] private GameObject playerChar3;
@@ -77,6 +78,8 @@ public class BattleSystem : MonoBehaviour
 
     void loseGame()
     {
+        bool isActive = LosePanel.activeSelf;
+        LosePanel.SetActive(!isActive);
         Debug.Log("Your party has been defeated, you lose!");
         state = BattleState.LOSE;
     }
