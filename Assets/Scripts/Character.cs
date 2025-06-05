@@ -207,30 +207,29 @@ public class Character : MonoBehaviour
 
         if (spriteBobber != null)
         {
-            spriteBobber.SetBobbing(false); // Stop idle bob
+            spriteBobber.SetBobbing(false);
         }
 
         if (animator != null)
         {
-            // Ensure you have an Animator trigger named "DoReapWhatYouSow"
+ 
             animator.SetBool("Reaping", true); 
         }
         else
         {
             Debug.LogError(this.name + " is missing Animator component! Performing action without animation.");
-            // Fallback: If no animator, perform the action directly
+
             ExecuteReapWhatYouSowLogic(); 
         }
-        // UI deactivation and endTurn() are now handled by OnReapWhatYouSowAnimationComplete or ExecuteReapWhatYouSowLogic
+       
     }
 
-    // This function will be called by an Animation Event
     public void OnReapWhatYouSowAnimationComplete()
     {
         Debug.Log(this.name + ": OnReapWhatYouSowAnimationComplete event fired.");
         if (spriteBobber != null)
         {
-            spriteBobber.SetBobbing(true); // Re-enable bobbing
+            spriteBobber.SetBobbing(true); 
         }
         animator.SetBool("Reaping", false);
         ExecuteReapWhatYouSowLogic();
