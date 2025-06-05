@@ -70,6 +70,7 @@ public class BattleSystem : MonoBehaviour
     {
         if (enemies.TrueForAll(character => character.GetComponent<Enemy>().isdead))
         {
+            state = BattleState.WIN;
             winGame();
         }
     }
@@ -77,6 +78,7 @@ public class BattleSystem : MonoBehaviour
     void loseGame()
     {
         Debug.Log("Your party has been defeated, you lose!");
+        state = BattleState.LOSE;
     }
 
     void winGame()
@@ -91,31 +93,42 @@ public void TriggerNextTurn()
 
 private IEnumerator nextTurn()
 {
-    if (turnsTillNewRound % 8 == 0)
-    {
-        round += 1;
-    }
+        if (state == BattleState.LOSE)
+        {
+            yield return 0;
+        }
+        else if (state == BattleState.WIN)
+        {
+            yield return 0;
+        }
+        else
+        {
+            if (turnsTillNewRound % 8 == 0)
+            {
+                round += 1;
+            }
 
-    turnsTillNewRound += 1;
+            turnsTillNewRound += 1;
 
-    if (state == BattleState.PLAYERTURN)
-    {
-        Character currentPlayer = party[nextPlayer].GetComponent<Character>();
-        state = BattleState.ENEMYTURN;
+            if (state == BattleState.PLAYERTURN)
+            {
+                Character currentPlayer = party[nextPlayer].GetComponent<Character>();
+                state = BattleState.ENEMYTURN;
 
-        yield return new WaitForSeconds(0.1f); // Prevent immediate recursion
-        Debug.Log("It is now" + currentPlayer.name + "'s turn");
-        currentPlayer.startTurn();
-    }
-    else if (state == BattleState.ENEMYTURN)
-    {
-        Enemy currentEnemy = enemies[nextEnemy].GetComponent<Enemy>();
-        state = BattleState.PLAYERTURN;
+                yield return new WaitForSeconds(0.1f); // Prevent immediate recursion
+                Debug.Log("It is now" + currentPlayer.name + "'s turn");
+                currentPlayer.startTurn();
+            }
+            else if (state == BattleState.ENEMYTURN)
+            {
+                Enemy currentEnemy = enemies[nextEnemy].GetComponent<Enemy>();
+                state = BattleState.PLAYERTURN;
 
-        yield return new WaitForSeconds(0.1f); // Prevent immediate recursion
-        Debug.Log("It is now " + currentEnemy.name + "'s turn");
-        currentEnemy.startTurn();
-    }
+                yield return new WaitForSeconds(0.1f); // Prevent immediate recursion
+                Debug.Log("It is now " + currentEnemy.name + "'s turn");
+                currentEnemy.startTurn();
+            }
+        }
 }
 
 }
