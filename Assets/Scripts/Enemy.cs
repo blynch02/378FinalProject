@@ -6,6 +6,7 @@ using Unity.VisualScripting.Dependencies.NCalc;
 using UnityEngine;
 using UnityEngine.UI;
 
+
 public class Enemy : MonoBehaviour
 {
     [SerializeField] public int health;
@@ -34,6 +35,19 @@ public class Enemy : MonoBehaviour
 
     [SerializeField] private Transform damagePopup;
     private List<Action> attacks;
+
+    public int protectionRes;
+    public int bleedRes;
+    public int stunRes;
+    public int confusionRes;
+    public int fireRes;
+    public int poisonRes;
+    public int blindRes;
+    public int crippleRes;
+
+    public enum EnemyType { Bill, Greg, Leroy, Brad }
+
+    [SerializeField] private EnemyType enemyType;
 
     private HealthBar healthBar;
     public int maxHealth = 10;
@@ -65,7 +79,51 @@ public class Enemy : MonoBehaviour
         effect_dur.Add("Weakness_20", 0);
         effect_dur.Add("Terrified_30", 0);
 
+        switch (enemyType)
+        {
+            case EnemyType.Bill:
+                protectionRes = 10;
+                bleedRes = 20;
+                stunRes = 30;
+                fireRes = 0;
+                confusionRes = 4;
+                blindRes = 30;
+                crippleRes = 10;
+                poisonRes = 10;
+                break;
+            case EnemyType.Greg:
+                protectionRes = 50;
+                bleedRes = 5;
+                stunRes = 10;
+                fireRes = 25;
+                confusionRes = 40;
+                blindRes = 0;
+                crippleRes = 2;
+                poisonRes = 20;
+                break;
+            case EnemyType.Leroy:
+                protectionRes = 20;
+                bleedRes = 10;
+                stunRes = 10;
+                fireRes = 80;
+                confusionRes = 15;
+                blindRes = 55;
+                crippleRes = 30;
+                poisonRes = 11;
+                break;
+            case EnemyType.Brad:
+                protectionRes = 25;
+                bleedRes = 4;
+                stunRes = 8;
+                fireRes = 10;
+                confusionRes = 25;
+                blindRes = 40;
+                crippleRes = 0;
+                poisonRes = 18;
+                break;
+        }
     }
+
 
     public void showStatusEffect(string message)
     {
@@ -407,9 +465,40 @@ void endTurn()
 }
 
     public void setStatusEffect(string effect, int dur)
+{
+    if (effect == "Stun" && UnityEngine.Random.Range(0, 100) < stunRes)
+    {
+        Debug.Log(name + " resisted stun!");
+        return;
+    }
+
+    if (effect.StartsWith("Bleed") && UnityEngine.Random.Range(0, 100) < bleedRes)
+    {
+        Debug.Log(name + " resisted bleed!");
+        return;
+    }
+
+    if (effect.StartsWith("Burn") && UnityEngine.Random.Range(0, 100) < fireRes)
+    {
+        Debug.Log(name + " resisted fire!");
+        return;
+    }
+
+    if (effect == "Protection_50")
     {
         this.effect_dur[effect] += dur;
+        return;
     }
+
+    if (effect.StartsWith("Poison") && UnityEngine.Random.Range(0, 100) < poisonRes)
+    {
+        Debug.Log(name + " resisted poison!");
+        return;
+    }
+
+    this.effect_dur[effect] += dur;
+}
+
 
     public int getStatusEffect(string effect)
     {

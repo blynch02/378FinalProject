@@ -1152,6 +1152,7 @@ MonoBehaviour:
   owner: {fileID: 791107906}
   enemyRef: {fileID: 1471319019}
   label: {fileID: 670206996}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &263674419
 GameObject:
   m_ObjectHideFlags: 0
@@ -1760,7 +1761,7 @@ Transform:
   m_GameObject: {fileID: 304862440}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 8.896192, z: -0.33288282}
+  m_LocalPosition: {x: 0, y: 6, z: -0.33288282}
   m_LocalScale: {x: -1.140845, y: 1.1775343, z: 0.011224647}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2667,7 +2668,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: 18.640656, z: -46.60144, w: 0}
+  m_margin: {x: 0, y: 18.640656, z: -146.45508, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -2830,6 +2831,7 @@ MonoBehaviour:
   owner: {fileID: 635456142}
   enemyRef: {fileID: 800883348}
   label: {fileID: 1273450884}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &410386763
 GameObject:
   m_ObjectHideFlags: 0
@@ -3353,8 +3355,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 191.35, y: 76.45}
-  m_SizeDelta: {x: 124.01917, y: 30}
+  m_AnchoredPosition: {x: -224.59921, y: 37.5}
+  m_SizeDelta: {x: 54.8208, y: 11.9267}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &464103086
 MonoBehaviour:
@@ -3465,6 +3467,7 @@ MonoBehaviour:
   owner: {fileID: 1682228756}
   enemyRef: {fileID: 1780222506}
   label: {fileID: 1852027191}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &486906826
 GameObject:
   m_ObjectHideFlags: 0
@@ -5471,6 +5474,7 @@ MonoBehaviour:
   owner: {fileID: 333357405}
   enemyRef: {fileID: 800883348}
   label: {fileID: 1529112389}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &730559880
 GameObject:
   m_ObjectHideFlags: 0
@@ -5660,7 +5664,7 @@ Transform:
   m_GameObject: {fileID: 748927709}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 8.896192, z: -0.33288282}
+  m_LocalPosition: {x: 0, y: 6, z: -0.33288282}
   m_LocalScale: {x: -1.140845, y: 1.1775343, z: 0.011224647}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6073,6 +6077,7 @@ MonoBehaviour:
   owner: {fileID: 635456142}
   enemyRef: {fileID: 1780222506}
   label: {fileID: 1956276416}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &773929074
 GameObject:
   m_ObjectHideFlags: 0
@@ -6222,6 +6227,7 @@ MonoBehaviour:
   owner: {fileID: 791107906}
   enemyRef: {fileID: 1598413507}
   label: {fileID: 165244529}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &791107905
 GameObject:
   m_ObjectHideFlags: 0
@@ -6658,6 +6664,15 @@ MonoBehaviour:
   bloodParticleTrans: {fileID: 882171949}
   particles: {fileID: 5388816763858023324, guid: 095db438aa1aa4542be13f82497b16a1, type: 3}
   damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
+  protectionRes: 0
+  bleedRes: 0
+  stunRes: 0
+  confusionRes: 0
+  fireRes: 0
+  poisonRes: 0
+  blindRes: 0
+  crippleRes: 0
+  enemyType: 1
   maxHealth: 28
   audioClips: []
 --- !u!212 &800883350
@@ -7203,9 +7218,9 @@ Transform:
   m_GameObject: {fileID: 862501507}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.2, y: 6.1196094, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalPosition: {x: 0.2, y: 2.8, z: 0}
+  m_LocalScale: {x: 0.025, y: 0.05, z: 0.05}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1682228758}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7389,6 +7404,7 @@ MonoBehaviour:
   owner: {fileID: 333357405}
   enemyRef: {fileID: 1598413507}
   label: {fileID: 1083141720}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &953709363
 GameObject:
   m_ObjectHideFlags: 0
@@ -8416,6 +8432,7 @@ MonoBehaviour:
   owner: {fileID: 635456142}
   enemyRef: {fileID: 1471319019}
   label: {fileID: 1785800710}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &1120495254
 GameObject:
   m_ObjectHideFlags: 0
@@ -9890,8 +9907,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 377, y: 76.4}
-  m_SizeDelta: {x: 124.01917, y: 30}
+  m_AnchoredPosition: {x: -102.56328, y: 38.017082}
+  m_SizeDelta: {x: 51.0926, y: 9.8342}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1343530354
 MonoBehaviour:
@@ -10002,6 +10019,7 @@ MonoBehaviour:
   owner: {fileID: 1682228756}
   enemyRef: {fileID: 1471319019}
   label: {fileID: 2110744447}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &1400489995
 GameObject:
   m_ObjectHideFlags: 0
@@ -10151,6 +10169,7 @@ MonoBehaviour:
   owner: {fileID: 791107906}
   enemyRef: {fileID: 1780222506}
   label: {fileID: 1491911263}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &1403178440
 GameObject:
   m_ObjectHideFlags: 0
@@ -10300,6 +10319,7 @@ MonoBehaviour:
   owner: {fileID: 333357405}
   enemyRef: {fileID: 1471319019}
   label: {fileID: 501704139}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &1419197155
 GameObject:
   m_ObjectHideFlags: 0
@@ -10480,6 +10500,7 @@ MonoBehaviour:
   owner: {fileID: 635456142}
   enemyRef: {fileID: 1598413507}
   label: {fileID: 1120495256}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &1425409821
 GameObject:
   m_ObjectHideFlags: 0
@@ -10804,8 +10825,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -10903,6 +10924,15 @@ MonoBehaviour:
   bloodParticleTrans: {fileID: 1964503251}
   particles: {fileID: 5388816763858023324, guid: 095db438aa1aa4542be13f82497b16a1, type: 3}
   damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
+  protectionRes: 0
+  bleedRes: 0
+  stunRes: 0
+  confusionRes: 0
+  fireRes: 0
+  poisonRes: 0
+  blindRes: 0
+  crippleRes: 0
+  enemyType: 2
   maxHealth: 38
   audioClips: []
 --- !u!212 &1471319021
@@ -11259,6 +11289,7 @@ MonoBehaviour:
   owner: {fileID: 333357405}
   enemyRef: {fileID: 1780222506}
   label: {fileID: 1845535323}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &1491911261
 GameObject:
   m_ObjectHideFlags: 0
@@ -11943,8 +11974,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -12247,6 +12278,15 @@ MonoBehaviour:
   bloodParticleTrans: {fileID: 1964503251}
   particles: {fileID: 5388816763858023324, guid: 095db438aa1aa4542be13f82497b16a1, type: 3}
   damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
+  protectionRes: 0
+  bleedRes: 0
+  stunRes: 0
+  confusionRes: 0
+  fireRes: 0
+  poisonRes: 0
+  blindRes: 0
+  crippleRes: 0
+  enemyType: 3
   maxHealth: 40
   audioClips: []
 --- !u!95 &1598413511
@@ -12454,8 +12494,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 465.41, y: 76.45}
-  m_SizeDelta: {x: 124.01917, y: 30}
+  m_AnchoredPosition: {x: -43.481117, y: 37.7337}
+  m_SizeDelta: {x: 52.8569, y: 11.6674}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1626067709
 MonoBehaviour:
@@ -12566,6 +12606,7 @@ MonoBehaviour:
   owner: {fileID: 1682228756}
   enemyRef: {fileID: 1598413507}
   label: {fileID: 1588268379}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &1682228755
 GameObject:
   m_ObjectHideFlags: 0
@@ -12680,8 +12721,8 @@ Transform:
   m_GameObject: {fileID: 1682228755}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -466, y: -66, z: 0}
-  m_LocalScale: {x: 25.55, y: 26.371681, z: 0.25137788}
+  m_LocalPosition: {x: -468.6726, y: -66, z: 0}
+  m_LocalScale: {x: 38.306087, y: 38.051926, z: 0.15938638}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 862501508}
@@ -12847,7 +12888,7 @@ Transform:
   m_GameObject: {fileID: 1685600229}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 8.755346, z: -0.33288282}
+  m_LocalPosition: {x: 0, y: 6, z: -0.33288282}
   m_LocalScale: {x: -1.140845, y: 1.1775343, z: 0.011224647}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -12890,8 +12931,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 285.61, y: 76.46}
-  m_SizeDelta: {x: 118.87888, y: 30}
+  m_AnchoredPosition: {x: -162.8646, y: 37.7057}
+  m_SizeDelta: {x: 51.3496, y: 12.2113}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1745999815
 MonoBehaviour:
@@ -13002,37 +13043,7 @@ MonoBehaviour:
   owner: {fileID: 1682228756}
   enemyRef: {fileID: 800883348}
   label: {fileID: 1456712688}
---- !u!1 &1746765631
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1746765632}
-  m_Layer: 0
-  m_Name: BloodParticleTrans
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1746765632
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1746765631}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 4.13}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 333357404}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &1748324730
 GameObject:
   m_ObjectHideFlags: 0
@@ -13650,6 +13661,15 @@ MonoBehaviour:
   bloodParticleTrans: {fileID: 1258383671}
   particles: {fileID: 5388816763858023324, guid: 095db438aa1aa4542be13f82497b16a1, type: 3}
   damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
+  protectionRes: 0
+  bleedRes: 0
+  stunRes: 0
+  confusionRes: 0
+  fireRes: 0
+  poisonRes: 0
+  blindRes: 0
+  crippleRes: 0
+  enemyType: 0
   maxHealth: 32
   audioClips: []
 --- !u!212 &1780222508
@@ -14386,6 +14406,7 @@ MonoBehaviour:
   owner: {fileID: 791107906}
   enemyRef: {fileID: 800883348}
   label: {fileID: 1275597411}
+  resistanceDisplay: {fileID: 2043849552}
 --- !u!1 &1815581509
 GameObject:
   m_ObjectHideFlags: 0
@@ -14757,7 +14778,7 @@ Transform:
   m_GameObject: {fileID: 1841550258}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: 8.896192, z: -0.3328828}
+  m_LocalPosition: {x: 0, y: 6, z: -0.3328828}
   m_LocalScale: {x: -1.140845, y: 1.1775342, z: 0.011224646}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14987,8 +15008,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -15710,6 +15731,7 @@ GameObject:
   - component: {fileID: 2043849549}
   - component: {fileID: 2043849551}
   - component: {fileID: 2043849550}
+  - component: {fileID: 2043849552}
   m_Layer: 5
   m_Name: Resistances Panel
   m_TagString: Untagged
@@ -15782,6 +15804,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2043849548}
   m_CullTransparentMesh: 1
+--- !u!114 &2043849552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2043849548}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 061141684e49b954f9c0a6e1e3dbca9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  protectionText: {fileID: 369221015}
+  bleedText: {fileID: 1279433078}
+  stunText: {fileID: 1780624969}
+  confusionText: {fileID: 423542867}
+  fireText: {fileID: 536394815}
+  poisonText: {fileID: 325497885}
+  blindText: {fileID: 121543221}
+  crippleText: {fileID: 1748881342}
 --- !u!1 &2052821356
 GameObject:
   m_ObjectHideFlags: 0
@@ -16314,8 +16356,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 24
-  m_fontSizeBase: 24
+  m_fontSize: 10
+  m_fontSizeBase: 10
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
