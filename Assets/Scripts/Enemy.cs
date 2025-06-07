@@ -29,6 +29,8 @@ public class Enemy : MonoBehaviour
     [SerializeField] private GameObject healthBarPrefab;
     [SerializeField] private Transform healthBarAnchor;
     [SerializeField] private GameObject[] targetButtons;
+    [SerializeField] private Transform bloodParticleTrans;
+    [SerializeField] private ParticleSystem particles;
 
     [SerializeField] private Transform damagePopup;
     private List<Action> attacks;
@@ -36,10 +38,15 @@ public class Enemy : MonoBehaviour
     private HealthBar healthBar;
     public int maxHealth = 10;
 
+    private AudioSource audioSource;
+
+    [SerializeField] AudioClip[] audioClips; 
+
     void Start()
     {
         attacks = new List<Action> { enemyAttack1, enemyAttack2, enemyAttack3 };
         health = maxHealth;
+        audioSource = GetComponent<AudioSource>();
 
         GameObject hb = Instantiate(healthBarPrefab, transform);
         hb.transform.localPosition = healthBarAnchor.localPosition;
@@ -73,6 +80,12 @@ public class Enemy : MonoBehaviour
 
     public void setHealth(int val)
     {
+        if (val < this.health && particles != null)
+        {
+            Instantiate(particles, bloodParticleTrans.position, Quaternion.identity).Play();
+            audioSource.pitch = UnityEngine.Random.Range(0.5f, 1.5f);
+            audioSource.Play();
+        }
         Vector3 randomOffset = new Vector3(
         UnityEngine.Random.Range(-100, 100),
         UnityEngine.Random.Range(90, 125),
@@ -83,8 +96,9 @@ public class Enemy : MonoBehaviour
         this.health = Mathf.Clamp(val, 0, maxHealth);
 
         if (healthBar != null)
+        {
             healthBar.SetHealth(health, maxHealth);
-
+        }
         if (this.health <= 0 && !isdead)
         {
             isdead = true;

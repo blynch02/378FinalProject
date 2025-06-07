@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Character : MonoBehaviour
@@ -22,6 +23,8 @@ public class Character : MonoBehaviour
     [SerializeField] private GameObject currentTarget;
     [SerializeField] private GameObject targetButtonsGroup;
     [SerializeField] private List<UnityEngine.UI.Button> targetButtons;
+    [SerializeField] private Transform bloodParticleTrans;
+    [SerializeField] private ParticleSystem particles;
     private UnityEngine.UI.Button selectedButton;
 
     private HealthBar healthBar;
@@ -43,6 +46,10 @@ public class Character : MonoBehaviour
 
     private bool terrified = false;
 
+    private AudioSource audioSource;
+
+    [SerializeField] AudioClip[] audioClips; 
+
     // Variables for animation handling
     private Animator animator;
     private SimpleSpriteBob spriteBobber;
@@ -57,6 +64,7 @@ public class Character : MonoBehaviour
         healthBar = hb.GetComponent<HealthBar>();
         Debug.Log($"Updating health bar: {health} / {maxHealth}");
         healthBar.SetHealth(health, maxHealth);
+        audioSource = GetComponent<AudioSource>();
         effect_dur.Add("Stun", 0);
         effect_dur.Add("Bleed_1", 0);
         effect_dur.Add("Bleed_2", 0);
@@ -581,6 +589,54 @@ public class Character : MonoBehaviour
 
     }
 
+    public void Bloodlet()
+    {
+        if (currentTarget == null) return;
+
+        Enemy target = currentTarget.GetComponent<Enemy>();
+        int damage = UnityEngine.Random.Range(4, 7);
+        int accuracyThreshold = 20;
+        int bleedThreshold = 30;
+
+        if (strength)
+        {
+            damage = (int)math.ceil(damage * 1.2);
+        }
+        if (weakness)
+        {
+            damage = (int)math.ceil(damage * .8);
+        }
+        if (terrified)
+        {
+            accuracyThreshold = accuracyThreshold + 30;
+        }
+        if (target.getStatusEffect("Bleed_1") > 0)
+        {
+            damage = damage * 2;
+        }
+        if (UnityEngine.Random.Range(0, 101) >= accuracyThreshold)
+        {
+            target.setHealth(target.health - damage);
+            if (UnityEngine.Random.Range(0, 101) >= bleedThreshold)
+            {
+                Debug.Log(target.name + " is now BLEEDING");
+                target.showStatusEffect("Bleeding!");
+                target.setStatusEffect("Bleed_1", 2);
+            }
+        }
+        else
+        {
+            target.showStatusEffect("Missed!");
+        }
+
+        InputPanel.SetActive(false);
+        if (targetButtonsGroup != null)
+        {
+            targetButtonsGroup.SetActive(false);
+        }
+        endTurn();
+    }
+
     public void Spill_Their_Blood()
     {
         if (currentTarget == null) return;
@@ -685,6 +741,17 @@ public class Character : MonoBehaviour
 
     public void setHealth(int val)
     {
+        if (val < this.health && particles != null)
+        {
+            Instantiate(particles, bloodParticleTrans.position, Quaternion.identity).Play();
+            audioSource.pitch = UnityEngine.Random.Range(0.5f, 1.5f);
+            audioSource.PlayOneShot(audioClips[0]);
+        }
+        else if (val > this.health)
+        {
+            audioSource.pitch = UnityEngine.Random.Range(0.5f, 1.5f);
+            audioSource.PlayOneShot(audioClips[1]);  
+        }
         Vector3 randomOffset = new Vector3(
         UnityEngine.Random.Range(-100, 100),
         UnityEngine.Random.Range(90, 125),
@@ -692,12 +759,14 @@ public class Character : MonoBehaviour
         Transform damagePopupTransform = Instantiate(damagePopup, this.transform.position + randomOffset, Quaternion.identity);
         DamageNumbers dmgnums = damagePopupTransform.GetComponent<DamageNumbers>();
         dmgnums.setUp(health - val);
+        int currentHealth = health;
         health = Mathf.Clamp(val, 0, maxHealth);
         Debug.Log($"Updating health bar: {health} / {maxHealth}");
 
         if (healthBar != null)
+        {
             healthBar.SetHealth(health, maxHealth);
-
+        }
         if (health <= 0 && !isdead)
         {
             isdead = true;
