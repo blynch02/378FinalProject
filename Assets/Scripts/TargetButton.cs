@@ -10,6 +10,8 @@ public class TargetButton : MonoBehaviour
 
     private Button button;
     private static TargetButton currentlySelected;
+    [SerializeField] private ResistanceDisplay resistanceDisplay;
+
 
     private void Awake()
     {
@@ -18,23 +20,35 @@ public class TargetButton : MonoBehaviour
     }
 
     void OnClick()
+{
+    if (currentlySelected == this)
     {
-        if (currentlySelected == this)
-        {
-            SetSelected(false);
-            currentlySelected = null;
-            owner.SetTarget(null);
-        }
-        else
-        {
-            if (currentlySelected != null)
-                currentlySelected.SetSelected(false);
+        SetSelected(false);
+        currentlySelected = null;
+        owner.SetTarget(null);
 
-            currentlySelected = this;
-            SetSelected(true);
-            owner.SetTarget(enemyRef);
+        resistanceDisplay.DisplayResistances(null);
+    }
+    else
+    {
+        if (currentlySelected != null)
+            currentlySelected.SetSelected(false);
+
+        currentlySelected = this;
+        SetSelected(true);
+        owner.SetTarget(enemyRef);
+
+        if (enemyRef != null)
+        {
+            Enemy enemy = enemyRef.GetComponent<Enemy>();
+            if (enemy != null)
+            {
+                resistanceDisplay.DisplayResistances(enemy);
+            }
         }
     }
+}
+
 
     public void SetSelected(bool selected)
     {
