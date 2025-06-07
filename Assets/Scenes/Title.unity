@@ -1902,7 +1902,12 @@ MonoBehaviour:
     Jared Hammett
 
     Pixel
-    Game Font By  suhadidesign https://www.fontspace.com/pixel-game-font-f121080'
+    Game Font By  suhadidesign https://www.fontspace.com/pixel-game-font-f121080
+
+    Sound
+    Effect Generation https://sfxr.me/
+
+    Background Music by Kaden_Cook https://pixabay.com/music/video-games-8-bit-dungeon-251388/'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 5a1227303079a054ea74a149e3811c45, type: 2}
   m_sharedMaterial: {fileID: -5381270357000351110, guid: 5a1227303079a054ea74a149e3811c45, type: 2}
