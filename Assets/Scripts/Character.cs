@@ -49,6 +49,9 @@ public class Character : MonoBehaviour
     private AudioSource audioSource;
 
     [SerializeField] AudioClip[] audioClips; 
+    [SerializeField] private GameObject currentAllyTarget;
+    [SerializeField] private PartyTargetButtons partyTargetButtonsUI;
+
 
     // Variables for animation handling
     private Animator animator;
@@ -376,16 +379,36 @@ public class Character : MonoBehaviour
 
     public void Divine_Intervention()
     {
-        Character target = battleSystem.GetComponent<BattleSystem>().party[0].GetComponent<Character>();
+        // Open the party selection UI
+        partyTargetButtonsUI.Show(this, battleSystem.GetComponent<BattleSystem>().party, ExecuteDivineIntervention);
+    }
+
+    public void ExecuteDivineIntervention()
+    {
+        if (currentAllyTarget == null)
+        {
+            Debug.LogWarning("No ally target selected.");
+            return;
+        }
+
+        Character target = currentAllyTarget.GetComponent<Character>();
         int healVal = UnityEngine.Random.Range(4, 9);
         target.setHealth(target.health + healVal);
-        Debug.Log("Healed " + target.name + "for " + healVal);
+        target.showStatusEffect("Healed!");
+        Debug.Log("Healed " + target.name + " for " + healVal);
+
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
-        {
             targetButtonsGroup.SetActive(false);
-        }
+        partyTargetButtonsUI.Hide();
+
         endTurn();
+    }
+
+    public void SetAllyTarget(GameObject target)
+    {
+        currentAllyTarget = target;
+        Debug.Log(name + " selected ally target: " + target.name);
     }
 
     public void Sanctuary_Of_Light()
@@ -561,15 +584,28 @@ public class Character : MonoBehaviour
 
     public void Aura_Of_Protection()
     {
-        Character target = battleSystem.GetComponent<BattleSystem>().party[0].GetComponent<Character>();
-        target.showStatusEffect("Protected!");
+        // Show party target selection panel and defer execution
+        partyTargetButtonsUI.Show(this, battleSystem.GetComponent<BattleSystem>().party, ExecuteAuraOfProtection);
+    }
+
+    public void ExecuteAuraOfProtection()
+    {
+        if (currentAllyTarget == null)
+        {
+            Debug.LogWarning("No ally target selected.");
+            return;
+        }
+
+        Character target = currentAllyTarget.GetComponent<Character>();
         target.setStatusEffect("Protection_50", 2);
+        target.showStatusEffect("Protected!");
         Debug.Log("Protected " + target.name);
+
         InputPanel.SetActive(false);
         if (targetButtonsGroup != null)
-        {
             targetButtonsGroup.SetActive(false);
-        }
+        partyTargetButtonsUI.Hide();
+
         endTurn();
     }
 
