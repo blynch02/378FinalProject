@@ -1994,6 +1994,7 @@ Transform:
   m_Children:
   - {fileID: 1974602046}
   - {fileID: 1419197156}
+  - {fileID: 836129889}
   m_Father: {fileID: 1216198058}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &333357405
@@ -2017,7 +2018,7 @@ MonoBehaviour:
   currentTarget: {fileID: 0}
   targetButtonsGroup: {fileID: 1974602045}
   targetButtons: []
-  bloodParticleTrans: {fileID: 0}
+  bloodParticleTrans: {fileID: 836129889}
   particles: {fileID: 5388816763858023324, guid: 095db438aa1aa4542be13f82497b16a1, type: 3}
   healthBarAnchor: {fileID: 1419197156}
   damagePopup: {fileID: 4191755906092921063, guid: 419e25f6f81bd1442a4c022e6ab22e9d, type: 3}
@@ -7133,6 +7134,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 832603196}
   m_CullTransparentMesh: 1
+--- !u!1 &836129888
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 836129889}
+  m_Layer: 0
+  m_Name: BloodParticleTrans
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &836129889
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 836129888}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.3, y: -0.4609652, z: 0}
+  m_LocalScale: {x: 1.4992598, y: 1.4429086, z: 0.6340566}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 333357404}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &836564126
 GameObject:
   m_ObjectHideFlags: 0
