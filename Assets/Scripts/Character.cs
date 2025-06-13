@@ -916,6 +916,7 @@ public class Character : MonoBehaviour
             selectedButton.image.color = Color.white;
             selectedButton = null;
         }
+        animator.SetBool("Attacking", false);
         bs.TriggerNextTurn();
     }
 }
