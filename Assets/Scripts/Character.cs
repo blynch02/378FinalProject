@@ -213,7 +213,7 @@ public class Character : MonoBehaviour
     public void Reap_What_You_Sow()
     {
         if (currentTarget == null) return;
-        StartCoroutine(ExecuteAttackWithAnimation("Reaping", ExecuteReapWhatYouSowLogic));
+        StartCoroutine(ExecuteAttackWithAnimation("Attacking", ExecuteReapWhatYouSowLogic));
     }
 
     // Generic coroutine for handling attack animations
@@ -340,6 +340,12 @@ public class Character : MonoBehaviour
     public void Ace_In_The_Sleeve()
     {
         if (currentTarget == null) return;
+        StartCoroutine(ExecuteAttackWithAnimation("Attacking", ExecuteAceInTheSleeveLogic));
+    }
+
+    private void ExecuteAceInTheSleeveLogic()
+    {
+        if (currentTarget == null) return;
 
         Enemy target = currentTarget.GetComponent<Enemy>();
         int damage = UnityEngine.Random.Range(1, 16);
@@ -434,12 +440,7 @@ public class Character : MonoBehaviour
     public void Sanctimonious_Smite()
     {
         if (currentTarget == null) return;
-        
-        // Option A: Execute immediately (current behavior)
-        ExecuteSanctioniousSmiteLogic();
-        
-        // Option B: Execute with animation (just change the above line to this):
-        // StartCoroutine(ExecuteAttackWithAnimation("Smiting", ExecuteSanctioniousSmiteLogic));
+        StartCoroutine(ExecuteAttackWithAnimation("Attacking", ExecuteSanctioniousSmiteLogic));
     }
 
     private void ExecuteSanctioniousSmiteLogic()
@@ -491,6 +492,12 @@ public class Character : MonoBehaviour
     public void Holy_Rebuke()
     {
         if (currentTarget == null) return;
+        StartCoroutine(ExecuteAttackWithAnimation("Attacking", ExecuteHolyRebukeLogic));
+    }
+
+    private void ExecuteHolyRebukeLogic()
+    {
+        if (currentTarget == null) return;
         Enemy target = currentTarget.GetComponent<Enemy>();
 
         int damage = UnityEngine.Random.Range(5, 9);
@@ -540,6 +547,11 @@ public class Character : MonoBehaviour
 
     public void Dragons_Breath()
     {
+        StartCoroutine(ExecuteAttackWithAnimation("Attacking", ExecuteDragonsBreathLogic));
+    }
+
+    private void ExecuteDragonsBreathLogic()
+    {
         int accuracyThreshold = 30;
         foreach (GameObject enemy in battleSystem.GetComponent<BattleSystem>().enemies)
         {
@@ -559,6 +571,12 @@ public class Character : MonoBehaviour
     }
 
     public void Zephyrs_Call()
+    {
+        if (currentTarget == null) return;
+        StartCoroutine(ExecuteAttackWithAnimation("Attacking", ExecuteZephyrsCallLogic));
+    }
+
+    private void ExecuteZephyrsCallLogic()
     {
         if (currentTarget == null) return;
         Enemy target = currentTarget.GetComponent<Enemy>();
@@ -612,6 +630,12 @@ public class Character : MonoBehaviour
     public void Weakening_Curse()
     {
         if (currentTarget == null) return;
+        StartCoroutine(ExecuteAttackWithAnimation("Attacking", ExecuteWeakeningCurseLogic));
+    }
+
+    private void ExecuteWeakeningCurseLogic()
+    {
+        if (currentTarget == null) return;
         Enemy target = currentTarget.GetComponent<Enemy>();
         target.showStatusEffect("Weakened!");
         target.setStatusEffect("Weakness_20", 1);
@@ -622,10 +646,15 @@ public class Character : MonoBehaviour
             targetButtonsGroup.SetActive(false);
         }
         endTurn();
-
     }
 
     public void Bloodlet()
+    {
+        if (currentTarget == null) return;
+        StartCoroutine(ExecuteAttackWithAnimation("Attacking", ExecuteBloodletLogic));
+    }
+
+    private void ExecuteBloodletLogic()
     {
         if (currentTarget == null) return;
 
@@ -674,6 +703,12 @@ public class Character : MonoBehaviour
     }
 
     public void Spill_Their_Blood()
+    {
+        if (currentTarget == null) return;
+        StartCoroutine(ExecuteAttackWithAnimation("Attacking", ExecuteSpillTheirBloodLogic));
+    }
+
+    private void ExecuteSpillTheirBloodLogic()
     {
         if (currentTarget == null) return;
 
